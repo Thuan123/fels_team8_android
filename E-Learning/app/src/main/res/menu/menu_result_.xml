@@ -6,7 +6,7 @@ tools:context="group8.com.e_learning.Result_Activity">
 <item android:id="@+id/ok"
     android:title="OK"
     android:orderInCategory="100"
-    android:showAsAction="ifRoom"/>
+    app:showAsAction="ifRoom"/>
 </menu>
 
 

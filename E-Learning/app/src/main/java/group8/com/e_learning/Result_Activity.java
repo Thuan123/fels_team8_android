@@ -1,16 +1,32 @@
 package group8.com.e_learning;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Result_Activity extends AppCompatActivity {
+
+    TextView textLesson;
+
+
+    private String updateTextLesson()
+    {
+        Intent intent = getIntent();
+        return intent.getStringExtra("lessonName");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_);
+        textLesson = (TextView)findViewById(R.id.text_lesson);
+        textLesson.setText(updateTextLesson());
+        Toast.makeText(this, updateTextLesson(),Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -1,7 +1,9 @@
 package group8.com.e_learning;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -11,6 +13,8 @@ public class Lesson_Basic_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_basic_);
+        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar_actionBar);
+        setSupportActionBar(myToolbar);
     }
 
     @Override
@@ -28,8 +32,11 @@ public class Lesson_Basic_Activity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.button_done) {
+            Intent intent = new Intent(this, Result_Activity.class);
+            String lesson = getResources().getString(R.string.text_basic_lesson);
+            intent.putExtra("lessonName", lesson);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

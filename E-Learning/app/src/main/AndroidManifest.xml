@@ -2,11 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="group8.com.e_learning" >
 
+    <uses-sdk
+        android:maxSdkVersion="23"
+        android:minSdkVersion="19" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -18,11 +26,6 @@
         <activity
             android:name=".Lesson_Basic_Activity"
             android:label="@string/title_basic_lesson" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Category_activity"
@@ -31,6 +34,19 @@
         <activity
             android:name=".WordList_Activity"
             android:label="@string/title_activity_word_list_" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lesson_advance_activity"
+            android:label="@string/title_activity_lesson_advance_activity" >
+        </activity>
+        <activity
+            android:name=".Lesson_expert_activity"
+            android:label="@string/title_activity_lesson_expert_activity" >
         </activity>
     </application>
 
