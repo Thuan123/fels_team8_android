@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
+    tools:context="group8.com.e_learning.lesson_advance_activity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:id="@+id/toolbar_actionBar"
+       >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="@string/text_advance_lesson"
+            android:gravity="center"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView android:text="20/500" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_score"
+        android:textColor="#43a047"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/text_guest_word"
+            android:text="guest word"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/button_sound"
+            android:src="@android:drawable/btn_minus"
+            android:layout_marginLeft="150dp"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_japanese"
+        android:layout_gravity="center_horizontal"
+        android:text="tiếng nhật"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_vietnamese"
+        android:layout_gravity="center_horizontal"
+        android:text="tiếng Việt"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_Lao"
+        android:layout_gravity="center_horizontal"
+        android:text="Tiếng Lào"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_russian"
+        android:layout_gravity="center_horizontal"
+        android:text="Tiếng Nga"
+        />
+
+</LinearLayout>
+
