@@ -5,7 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_result_">Result_Activity</string>
     <string name="title_activity_result__content">Result_Content</string>
-    <string name="title_activity_lesson_"></string>l
+    <string name="title_activity_lesson_"></string>
+    <string name="title_login">Login</string>
 
     <string name="title_basic_lesson">Basic lesson</string>
     <string name="title_activity_category_activity">Category</string>
