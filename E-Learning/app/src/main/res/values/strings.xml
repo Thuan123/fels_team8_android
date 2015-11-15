@@ -9,6 +9,7 @@
     <string name="title_login">Login</string>
     <string name="title_register">Register</string>
     <string name="title_update_profile">Update Profile</string>
+    <string name="title_profile">Profile</string>
 
     <string name="title_basic_lesson">Basic lesson</string>
     <string name="title_activity_category_activity">Category</string>
