@@ -60,6 +60,10 @@
             android:name=".UpdateProfile_Activity"
             android:label="@string/title_update_profile" >
         </activity>
+        <activity
+            android:name=".Profile_Activity"
+            android:label="@string/title_profile" >
+        </activity>
     </application>
 
 </manifest>
