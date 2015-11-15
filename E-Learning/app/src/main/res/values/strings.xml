@@ -8,6 +8,7 @@
     <string name="title_activity_lesson_"></string>
     <string name="title_login">Login</string>
     <string name="title_register">Register</string>
+    <string name="title_update_profile">Update Profile</string>
 
     <string name="title_basic_lesson">Basic lesson</string>
     <string name="title_activity_category_activity">Category</string>
@@ -21,15 +22,15 @@
 
 
     <string-array name="planets_array">
-            <item>Mercury</item>
-            <item>Venus</item>
-            <item>Earth</item>
-            <item>Mars</item>
-            <item>Jupiter</item>
-            <item>Saturn</item>
-            <item>Uranus</item>
-            <item>Neptune</item>
-        </string-array>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
     <string name="title_activity_lesson_advance_activity">lesson_advance_activity</string>
     <string name="title_activity_lesson_expert_activity">Lesson_expert_activity</string>
     <string name="text_expert_lesson">Expert lesson</string>
