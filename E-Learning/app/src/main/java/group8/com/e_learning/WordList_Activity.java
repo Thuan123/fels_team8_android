@@ -7,10 +7,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import group8.com.e_learning.network.EConnect;
 
 
-public class WordList_Activity extends AppCompatActivity {
-
+public class WordList_Activity extends AppCompatActivity 
+                                            implements EConnect.OnConnected{
+    private JSONObject jsonObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,5 +49,23 @@ public class WordList_Activity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void getJson(JSONObject jsonObject) {
+        this.jsonObject = jsonObject;
+    }
+    
+    private ArrayList<Word> getList() throws JSONException
+    {
+        ArrayList<Word> result = new ArrayList<>();
+        JSONArray jsonArray = jsonObject.getJSONArray("list");// thay list = tag name cua list trong api nhe
+        for(int i=0;i<jsonArray.length();i++)
+        {
+            JSONObject object = jsonArray.getJSONObject(i);
+            //tiep theo lay cac du lieu trong object chuyen vao result nhe
+        }
+        return result;
     }
 }
