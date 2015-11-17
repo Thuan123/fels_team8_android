@@ -4,27 +4,32 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import group8.com.e_learning.common.Application;
 import group8.com.e_learning.database.ELearningDB.Elearning;
 /**
  * Created by nomore on 12/11/2015.
  */
 public class SQLiteHelper extends SQLiteOpenHelper{
 
+    private static SQLiteHelper instace;
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
-    /*private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + ELearningDB.Elearning.TABLE_NAME + " (" +
+    private static final String SQL_CREATE_USER =
+            "CREATE TABLE " + Elearning.TABLE_USER + " (" +
                     Elearning._ID + " INTEGER PRIMARY KEY," +
-                    Elearning.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA_SEP +
-                    Elearning.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
-    ... // Any other options for the CREATE command
-            " )";*/
+                    Elearning.COLUMN_CREATE_AT + TEXT_TYPE + COMMA_SEP +
+                    Elearning.COLUMN_UPDATE_AT + TEXT_TYPE +" )";
 
    // private static final String SQL_DELETE_ENTRIES =
      //       "DROP TABLE IF EXISTS " + Elearning.TABLE_NAME;
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "ELearning.db";
+    public static SQLiteHelper getInstace()
+    {
+        if (instace == null) instace = new SQLiteHelper(Application.getInstance());
+        return instace;
+    }
 
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -63,9 +68,9 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     }
 
-    public void readFromDb()
+   /* public void readFromDb()
     {
-        /*
+
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 // Define a projection that specifies which columns from the database
@@ -106,10 +111,10 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         long itemId = cursor.getLong(
                 cursor.getColumnIndexOrThrow(FeedEntry._ID)
         );
-        */
 
 
-    }
+
+    }*/
 
 
     public void deleteFromDb()

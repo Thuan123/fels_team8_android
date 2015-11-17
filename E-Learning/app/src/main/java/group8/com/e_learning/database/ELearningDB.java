@@ -18,6 +18,8 @@ public final class ELearningDB {
 
 
         public static final String COLUMN_ID = "id";
+        public static final String COLUMN_USER_NAME = "User Name";
+        public static final String COLUMN_USER_PASS = "Password";
         public static final String COLUMN_CREATE_AT = "Create at";
         public static final String COLUMN_UPDATE_AT = "Update at";
 
