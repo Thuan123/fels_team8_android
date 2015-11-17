@@ -14,19 +14,19 @@ import java.util.Set;
  */
 public class SharedPreferencesHelper {
 
-        private static SharedPreferencesHelper instance = null;
-        public static final int LENGTH_OF_PREFERENCES = 35;
+    private static SharedPreferencesHelper instance = null;
+    public static final int LENGTH_OF_PREFERENCES = 35;
 
-        private SharedPreferencesHelper() {
+    private SharedPreferencesHelper() {
 
+    }
+
+    public static SharedPreferencesHelper getInstance() {
+        if (instance == null) {
+            instance = new SharedPreferencesHelper();
         }
-
-        public static SharedPreferencesHelper getInstance() {
-            if (instance == null) {
-                instance = new SharedPreferencesHelper();
-            }
-            return instance;
-        }
+        return instance;
+    }
 
        /* public boolean getCheckLogin() {
             SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
