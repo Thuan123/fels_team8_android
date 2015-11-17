@@ -8,17 +8,16 @@ import android.content.Context;
 public class Application extends android.app.Application {
 
     private static Application instance;
-    public Application()    {
+
+    public Application() {
         instance = this;
     }
 
-    public static Context getInstance()
-    {
+    public static Context getInstance() {
         return instance;
     }
 
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
         instance = this;
     }

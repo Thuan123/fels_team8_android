@@ -13,7 +13,7 @@ public class Lesson_expert_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_expert_activity);
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar_actionBar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
         setSupportActionBar(myToolbar);
     }
 
