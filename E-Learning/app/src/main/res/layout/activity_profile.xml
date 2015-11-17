@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_person_outline_black_24dp"
                 android:gravity="center_vertical"
-                android:text="Nguyen Van A"
+                android:text="\tNguyen Van A"
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
@@ -39,7 +39,8 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:gravity="center_vertical"
-                android:text="nguyenvana@gmail.com"
+                android:singleLine="true"
+                android:text="\tnguyenvana@gmail.com"
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
@@ -49,18 +50,29 @@
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_description_black_24dp"
                 android:gravity="center_vertical"
-                android:text="Leaned 102 words"
+                android:text="\tLeaned 102 words"
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <Button
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/ic_edit_black_24dp"
-            android:padding="5dp" />
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray">
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_edit_black_24dp"
+                android:onClick="onClick"
+                android:padding="5dp" />
+        </LinearLayout>
+
     </RelativeLayout>
 
     <TextView
@@ -86,19 +98,23 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btn_words"
                 android:layout_width="1dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="onClick"
                 android:text="Words"
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/btn_lesson"
                 android:layout_width="1dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:onClick="onClick"
                 android:text="Lesson"
                 android:textStyle="bold" />
 
