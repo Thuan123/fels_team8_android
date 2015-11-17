@@ -14,7 +14,7 @@ public class Category_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar_actionBar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
         setSupportActionBar(myToolbar);
     }
 
@@ -40,20 +40,19 @@ public class Category_activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.layout_basic:
-                Intent intent1 = new Intent(this,Lesson_Basic_Activity.class);
+                Intent intent1 = new Intent(this, Lesson_Basic_Activity.class);
                 startActivity(intent1);
                 break;
             case R.id.layout_advance:
-                Intent intent2 = new Intent(this,lesson_advance_activity.class);
+                Intent intent2 = new Intent(this, lesson_advance_activity.class);
                 startActivity(intent2);
                 break;
             case R.id.layout_expert:
-                Intent intent3 = new Intent(this,Lesson_expert_activity.class);
+                Intent intent3 = new Intent(this, Lesson_expert_activity.class);
                 startActivity(intent3);
                 break;
         }

@@ -1,70 +1,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="group8.com.e_learning.Category_activity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="group8.com.e_learning.Category_activity">
 
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_actionBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:id="@+id/toolbar_actionBar"
-        >
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:text="@string/text_category"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/text_category" />
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
+        android:id="@+id/layout_basic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:clickable="true"
-        android:id="@+id/layout_basic"
-        >
+        android:onClick="onClick">
 
         <ImageView
+            android:id="@+id/image_categories_basic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/alert_light_frame"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:id="@+id/image_categories_basic"
             android:duplicateParentState="true"
-            />
+            android:src="@android:drawable/alert_light_frame" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_basic"
-            android:layout_toRightOf="@id/image_categories_basic"
-            android:layout_alignParentTop="true"
             android:id="@+id/text_basic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/image_categories_basic"
+            android:text="@string/text_basic"
 
             />
 
         <TextView
+            android:id="@+id/text_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="you are..."
             android:layout_below="@id/text_basic"
             android:layout_toRightOf="@id/image_categories_basic"
-            android:id="@+id/text_comment"
-            />
+            android:text="you are..." />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="word, word, word"
             android:layout_below="@id/text_comment"
             android:layout_toRightOf="@id/image_categories_basic"
+            android:text="word, word, word"
 
             />
 
@@ -74,52 +72,49 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:width="1dp"
-        android:background="@android:color/black"
-        />
+        android:background="@android:color/black" />
 
 
     <RelativeLayout
+        android:id="@+id/layout_advance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:clickable="true"
-        android:id="@+id/layout_advance"
-        >
+        android:onClick="onClick">
 
         <ImageView
+            android:id="@+id/image_categories_advance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/alert_light_frame"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:id="@+id/image_categories_advance"
             android:duplicateParentState="true"
-            />
+            android:src="@android:drawable/alert_light_frame" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_advance"
-            android:layout_toRightOf="@id/image_categories_advance"
-            android:layout_alignParentTop="true"
             android:id="@+id/text_advance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/image_categories_advance"
+            android:text="@string/text_advance"
 
             />
 
         <TextView
+            android:id="@+id/text_comment2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="you are..."
             android:layout_below="@id/text_advance"
             android:layout_toRightOf="@id/image_categories_advance"
-            android:id="@+id/text_comment2"
-            />
+            android:text="you are..." />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="word, word, word"
             android:layout_below="@id/text_comment2"
             android:layout_toRightOf="@id/image_categories_advance"
+            android:text="word, word, word"
 
             />
 
@@ -129,55 +124,53 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:width="1dp"
-        android:background="@android:color/black"
-        />
+        android:background="@android:color/black" />
 
     <RelativeLayout
+        android:id="@+id/layout_expert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_expert"
-        android:onClick="onClick"
         android:clickable="true"
+        android:onClick="onClick"
 
         >
 
         <ImageView
+            android:id="@+id/image_categories_expert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/alert_light_frame"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:id="@+id/image_categories_expert"
-
+            android:src="@android:drawable/alert_light_frame"
 
 
             />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_expert"
-            android:layout_toRightOf="@id/image_categories_expert"
-            android:layout_alignParentTop="true"
             android:id="@+id/text_expert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/image_categories_expert"
+            android:text="@string/text_expert"
 
 
             />
 
         <TextView
+            android:id="@+id/text_comment3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="you are..."
             android:layout_below="@id/text_expert"
             android:layout_toRightOf="@id/image_categories_expert"
-            android:id="@+id/text_comment3"
-            />
+            android:text="you are..." />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="word, word, word"
             android:layout_below="@id/text_comment3"
             android:layout_toRightOf="@id/image_categories_expert"
+            android:text="word, word, word"
 
             />
 

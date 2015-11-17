@@ -6,15 +6,16 @@ import android.provider.BaseColumns;
  * Created by nomore on 12/11/2015.
  */
 public final class ELearningDB {
-    public ELearningDB(){}
+    public ELearningDB() {
+    }
+
     public static abstract class Elearning implements BaseColumns {
-        public static final String TABLE_USER = "User" ;
+        public static final String TABLE_USER = "User";
         public static final String TABLE_LESSON = "Lesson";
         public static final String TABLE_LESSON_WORD = "LessonWord";
         public static final String TABLE_CATEGORY = "Category";
         public static final String TABLE_WORD_ANSWER = "Word Answer";
         public static final String TABLE_WORD = "Word";
-
 
 
         public static final String COLUMN_ID = "id";

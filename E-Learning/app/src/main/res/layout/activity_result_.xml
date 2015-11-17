@@ -1,47 +1,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="group8.com.e_learning.Result_Activity">
 
     <android.support.v7.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    android:elevation="4dp"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:id="@+id/toolbar_actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <TextView
+        android:id="@+id/text_lesson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="Basic lesson"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    android:id="@+id/toolbar_actionBar"
-    />
+    <TextView
+        android:id="@+id/text_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="17/200"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#43a047" />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceMedium"
-    android:text="Basic lesson"
-    android:id="@+id/text_lesson"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:layout_gravity="center_horizontal" />
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceSmall"
-    android:text="17/200"
-    android:id="@+id/text_score"
-    android:layout_gravity="center_horizontal"
-    android:textColor="#43a047"/>
-<ListView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"></ListView>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>
