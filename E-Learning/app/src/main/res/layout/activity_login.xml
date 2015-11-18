@@ -41,7 +41,8 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:onClick="onClick"
-                    android:text="Login" />
+                    android:text="Login"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -115,7 +116,8 @@
                     android:gravity="center"
                     android:text="*Username or password is incorrect"
                     android:textColor="@android:color/holo_red_dark"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 

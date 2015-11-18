@@ -38,13 +38,13 @@
     <string name="text_expert_lesson">Expert lesson</string>
     <string name="text_advance_lesson">Advance Lesson</string>
     <string name="text_basic_lesson">Basic lesson</string>
-    <string name="text_word_list">Word list</string>
+    <string name="text_word_list">Words list</string>
     <string name="text_category">Category</string>
     <string name="text_profile">Profile</string>
     <string name="text_update_profile">Update Profile</string>
     <string name="text_cancel">Cancel</string>
-    <string name="text_updated">update</string>
-    <string name="text_back">back</string>
+    <string name="text_updated">Update</string>
+    <string name="text_back">Back</string>
     <string name="text_pdf">PDF</string>
     <string name="text_done">Done</string>
 
