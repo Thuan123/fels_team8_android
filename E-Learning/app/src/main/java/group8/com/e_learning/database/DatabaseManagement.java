@@ -29,10 +29,6 @@ public class DatabaseManagement {
                        userName
                };
 
-
-
-
-
         Cursor cursor = db.query(
                 ELearningDB.Elearning.TABLE_USER,
                 projection,
@@ -47,7 +43,6 @@ public class DatabaseManagement {
         result.setUserName(cursor.getString(cursor.getColumnIndex(ELearningDB.Elearning.COLUMN_USER_NAME)));
         result.setPassWord(cursor.getString(cursor.getColumnIndex(ELearningDB.Elearning.COLUMN_USER_PASS)));
         return result;
-
 
     }
 }
