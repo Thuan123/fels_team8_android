@@ -27,7 +27,7 @@ public class Profile_Activity extends Activity implements View.OnClickListener {
                 startActivity(intentWords);
                 break;
             case R.id.btn_lesson:
-                Intent intentLesson = new Intent(Profile_Activity.this, Lesson_Basic_Activity.class);
+                Intent intentLesson = new Intent(Profile_Activity.this, Category_activity.class);
                 startActivity(intentLesson);
                 break;
         }

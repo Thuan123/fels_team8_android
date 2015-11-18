@@ -14,8 +14,8 @@ public class Category_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-        setSupportActionBar(myToolbar);
+    //    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
+      //  setSupportActionBar(myToolbar);
     }
 
     @Override
@@ -40,6 +40,13 @@ public class Category_activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void tapBack()
+    {
+        Intent intent = new Intent(this, Profile_Activity.class);
+        startActivity(intent);
+    }
+
+
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -54,6 +61,9 @@ public class Category_activity extends AppCompatActivity {
             case R.id.layout_expert:
                 Intent intent3 = new Intent(this, Lesson_expert_activity.class);
                 startActivity(intent3);
+                break;
+            case R.id.button_back:
+                tapBack();
                 break;
         }
     }
