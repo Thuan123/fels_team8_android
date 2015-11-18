@@ -29,10 +29,6 @@ public class DatabaseManagement {
                        userName
                };
 
-
-
-
-
         Cursor cursor = db.query(
                 ELearningDB.Elearning.TABLE_USER,
                 projection,
