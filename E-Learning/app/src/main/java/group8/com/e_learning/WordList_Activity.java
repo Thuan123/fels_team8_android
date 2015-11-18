@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,8 +26,8 @@ public class WordList_Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-        setSupportActionBar(myToolbar);
+     //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
+       // setSupportActionBar(myToolbar);
     }
 
     @Override
@@ -35,7 +37,7 @@ public class WordList_Activity extends AppCompatActivity
         return true;
     }
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -50,6 +52,30 @@ public class WordList_Activity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    } */
+
+    private void tapBack()
+    {
+        Intent intent = new Intent(this, Profile_Activity.class);
+        startActivity(intent);
+    }
+
+    private void tapPDF()
+    {
+        Toast.makeText(this, "Print PDF",Toast.LENGTH_LONG).show();
+    }
+
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.button_back:
+                tapBack();
+                break;
+            case R.id.button_PDF:
+                tapPDF();
+                break;
+        }
     }
 
 

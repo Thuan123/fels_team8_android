@@ -12,14 +12,38 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
+        <LinearLayout
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_back"
+            android:id="@+id/button_back"
+            android:onClick="onClick"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/text_word_list" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_pdf"
+                android:id="@+id/button_PDF"
+                android:onClick="onClick"
+                />
+        </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 
 

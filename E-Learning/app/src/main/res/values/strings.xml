@@ -43,6 +43,9 @@
     <string name="text_update_profile">Update Profile</string>
     <string name="text_cancel">Cancel</string>
     <string name="text_updated">update</string>
+    <string name="text_back">back</string>
+    <string name="text_pdf">PDF</string>
+    <string name="text_done">Done</string>
 
 
 </resources>
