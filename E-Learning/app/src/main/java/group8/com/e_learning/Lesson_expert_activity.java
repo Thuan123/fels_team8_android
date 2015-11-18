@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Lesson_expert_activity extends AppCompatActivity {
 
@@ -40,5 +41,21 @@ public class Lesson_expert_activity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void tapBack()
+    {
+        Intent intent = new Intent(this, Category_activity.class);
+        startActivity(intent);
+    }
+
+    public void onClick(View view)
+    {
+        switch(view.getId())
+        {
+            case R.id.button_back:
+                tapBack();
+                break;
+        }
     }
 }

@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
 
             >
@@ -36,10 +36,19 @@
                     android:onClick="onClick"
                     />
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/text_update_profile"
                     android:gravity="center"
+                    android:layout_weight="1"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_updated"
+                    android:id="@+id/button_update"
+                    android:onClick="onClick"
                     />
 
 
