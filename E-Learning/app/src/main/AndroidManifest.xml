@@ -22,20 +22,11 @@
             android:name=".Result_Activity"
             android:label="@string/title_activity_result_"></activity>
         <activity
-            android:name=".Lesson_Basic_Activity"
-            android:label="@string/title_basic_lesson"></activity>
-        <activity
             android:name=".Category_activity"
             android:label="@string/title_activity_category_activity"></activity>
         <activity
             android:name=".WordList_Activity"
             android:label="@string/title_activity_word_list_"></activity>
-        <activity
-            android:name=".lesson_advance_activity"
-            android:label="@string/title_activity_lesson_advance_activity"></activity>
-        <activity
-            android:name=".Lesson_expert_activity"
-            android:label="@string/title_activity_lesson_expert_activity"></activity>
         <activity
             android:name=".Login_Activity"
             android:label="@string/title_login">
@@ -53,6 +44,9 @@
         <activity
             android:name=".Profile_Activity"
             android:label="@string/title_profile"></activity>
+        <activity
+            android:name=".Lesson_Activity"
+            android:label="@string/title_basic_lesson"></activity>
     </application>
 
 </manifest>

@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="group8.com.e_learning.Category_activity">
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_actionBar"
         android:layout_width="match_parent"
@@ -15,188 +14,229 @@
         android:elevation="4dp"
 
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/button_back"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:onClick="onClick"
+                android:text="@string/text_back" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_category"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_back"
-            android:id="@+id/button_back"
-            android:onClick="onClick"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="@string/text_category" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="abcderytryrtrtyrty"
-            android:textColor="@android:color/transparent"
-            />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="50dp" />
 
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/layout_basic"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="onClick">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:weightSum="4">
 
-        <ImageView
-            android:id="@+id/image_categories_basic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:duplicateParentState="true"
-            android:src="@android:drawable/alert_light_frame" />
+        <LinearLayout
+            android:id="@+id/layout_basic"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/text_basic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/image_categories_basic"
-            android:text="@string/text_basic"
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/recshape"
+                android:padding="5dp"
+                android:scaleType="centerInside" />
 
-            />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
-        <TextView
-            android:id="@+id/text_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_basic"
-            android:layout_toRightOf="@id/image_categories_basic"
-            android:text="you are..." />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Basic"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_comment"
-            android:layout_toRightOf="@id/image_categories_basic"
-            android:text="word, word, word"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="You're learned 200/500"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
 
-            />
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:width="1dp"
-        android:background="@android:color/black" />
-
-
-    <RelativeLayout
-        android:id="@+id/layout_advance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="onClick">
-
-        <ImageView
-            android:id="@+id/image_categories_advance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:duplicateParentState="true"
-            android:src="@android:drawable/alert_light_frame" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="word, word, word, ..."
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/text_advance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/image_categories_advance"
-            android:text="@string/text_advance"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:width="1dp"
+            android:background="@android:color/black" />
 
-            />
+        <LinearLayout
+            android:id="@+id/layout_advance"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/text_comment2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_advance"
-            android:layout_toRightOf="@id/image_categories_advance"
-            android:text="you are..." />
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/recshape"
+                android:padding="5dp"
+                android:scaleType="centerInside" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_comment2"
-            android:layout_toRightOf="@id/image_categories_advance"
-            android:text="word, word, word"
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Advance"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="You're learned 22/300"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:width="1dp"
-        android:background="@android:color/black" />
-
-    <RelativeLayout
-        android:id="@+id/layout_expert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="onClick"
-
-        >
-
-        <ImageView
-            android:id="@+id/image_categories_expert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="@android:drawable/alert_light_frame"
-
-
-            />
-
-        <TextView
-            android:id="@+id/text_expert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/image_categories_expert"
-            android:text="@string/text_expert"
-
-
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="word, word, word, ..."
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/text_comment3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_expert"
-            android:layout_toRightOf="@id/image_categories_expert"
-            android:text="you are..." />
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:width="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/layout_expert"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/recshape"
+                android:padding="5dp"
+                android:scaleType="centerInside" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Expert"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="You're learned 2/1500"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="word, word, word, ..."
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_comment3"
-            android:layout_toRightOf="@id/image_categories_expert"
-            android:text="word, word, word"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:width="1dp"
+            android:background="@android:color/black" />
 
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"></LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

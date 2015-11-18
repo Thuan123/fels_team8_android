@@ -10,12 +10,14 @@ import android.support.v7.widget.Toolbar;
 
 public class Category_activity extends AppCompatActivity {
 
+    public static final String KEY_TITLE = "key_title";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
-    //    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-      //  setSupportActionBar(myToolbar);
+        //    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
+        //  setSupportActionBar(myToolbar);
     }
 
     @Override
@@ -40,30 +42,26 @@ public class Category_activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void tapBack()
-    {
-        Intent intent = new Intent(this, Profile_Activity.class);
-        startActivity(intent);
-    }
-
-
     public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.layout_basic:
-                Intent intent1 = new Intent(this, Lesson_Basic_Activity.class);
-                startActivity(intent1);
+                Intent intentBasic = new Intent(this, Lesson_Activity.class);
+                intentBasic.putExtra(KEY_TITLE, "Basic Lesson");
+                startActivity(intentBasic);
                 break;
             case R.id.layout_advance:
-                Intent intent2 = new Intent(this, lesson_advance_activity.class);
-                startActivity(intent2);
+                Intent intentAdvance = new Intent(this, Lesson_Activity.class);
+                intentAdvance.putExtra(KEY_TITLE, "Advance Lesson");
+                startActivity(intentAdvance);
                 break;
             case R.id.layout_expert:
-                Intent intent3 = new Intent(this, Lesson_expert_activity.class);
-                startActivity(intent3);
+                Intent intentExpert = new Intent(this, Lesson_Activity.class);
+                intentExpert.putExtra(KEY_TITLE, "Expert Lesson");
+                startActivity(intentExpert);
                 break;
             case R.id.button_back:
-                tapBack();
+                finish();
                 break;
         }
     }

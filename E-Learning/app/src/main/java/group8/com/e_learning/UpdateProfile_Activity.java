@@ -18,21 +18,14 @@ public class UpdateProfile_Activity extends Activity {
         setContentView(R.layout.activity_update_profile);
     }
 
-    private void tapCancel() {
-        Toast.makeText(this, "Cancel", Toast.LENGTH_LONG).show();
+    private void tapUpdate() {
+        Toast.makeText(this, "Update Register", Toast.LENGTH_LONG).show();
     }
 
-    private void tapUpdate()
-    {
-        Toast.makeText(this, "Update",Toast.LENGTH_LONG).show();
-    }
-
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.button_cancel:
-                tapCancel();
+                finish();
                 break;
             case R.id.button_update:
                 tapUpdate();

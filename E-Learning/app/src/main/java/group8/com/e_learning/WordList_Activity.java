@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,13 +23,26 @@ import group8.com.e_learning.network.EConnect;
 public class WordList_Activity extends AppCompatActivity
         implements EConnect.OnConnected {
     private JSONObject jsonObject;
+    Spinner spLevel, spStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
-     //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-       // setSupportActionBar(myToolbar);
+        //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
+        // setSupportActionBar(myToolbar);
+        initSpiner();
+    }
+
+    private void initSpiner() {
+        spLevel = (Spinner) findViewById(R.id.sp_level);
+        spStatus = (Spinner) findViewById(R.id.sp_status);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.level_array, R.layout.spinner_item);
+        spLevel.setAdapter(adapter);
+
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.status_array, R.layout.spinner_item);
+        spStatus.setAdapter(adapter1);
     }
 
     @Override
@@ -54,23 +69,15 @@ public class WordList_Activity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     } */
 
-    private void tapBack()
-    {
-        Intent intent = new Intent(this, Profile_Activity.class);
-        startActivity(intent);
+
+    private void tapPDF() {
+        Toast.makeText(this, "Print PDF", Toast.LENGTH_LONG).show();
     }
 
-    private void tapPDF()
-    {
-        Toast.makeText(this, "Print PDF",Toast.LENGTH_LONG).show();
-    }
-
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.button_back:
-                tapBack();
+                finish();
                 break;
             case R.id.button_PDF:
                 tapPDF();

@@ -1,10 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="group8.com.e_learning.WordList_Activity">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_actionBar"
@@ -18,39 +17,63 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_back"
-            android:id="@+id/button_back"
-            android:onClick="onClick"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:text="@string/text_word_list" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_pdf"
-                android:id="@+id/button_PDF"
+                android:id="@+id/button_back"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
                 android:onClick="onClick"
-                />
+                android:text="Back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_word_list"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_PDF"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:onClick="onClick"
+                android:text="PDF" />
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <Spinner
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/sp_level"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:entries="@array/level_array"
+            android:popupBackground="#EEEEEE"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/sp_status"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:entries="@array/status_array"
+            android:popupBackground="#EEEEEE"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
 
 
 </LinearLayout>
