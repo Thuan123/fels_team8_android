@@ -15,6 +15,7 @@
         android:paddingTop="14dp">
 
         <TextView
+            android:id="@+id/tv_email"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -37,6 +38,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_pass"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -60,6 +62,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_retype_pass"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -83,6 +86,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_full_name"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -117,17 +121,21 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_person_outline_black_24dp"
                 android:gravity="center_vertical"
-                android:text="Avatar"
+                android:text="\tAvatar"
                 android:textColor="#039BE5"
                 android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@drawable/recshape"
+                android:padding="2dp"
+                android:src="@drawable/avata" />
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_required"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:gravity="center"
