@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     tools:context="group8.com.e_learning.WordList_Activity">
 
@@ -19,14 +20,48 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/text_word_list" />
+            android:text="@string/text_word_list"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/sp_level"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:dropDownSelector="@android:color/darker_gray"
+            android:entries="@array/level_array"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/sp_status"
+            style="@style/Base.Widget.AppCompat.DropDownItem.Spinner"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:dropDownSelector="@android:color/darker_gray"
+            android:entries="@array/status_array"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
     <Spinner
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:id="@+id/spinner"
+        style="@style/Base.Widget.AppCompat.DropDownItem.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:entries="@array/status_array" />
 
 
 </LinearLayout>

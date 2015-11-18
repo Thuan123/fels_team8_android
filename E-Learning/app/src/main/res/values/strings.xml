@@ -20,17 +20,18 @@
     <string name="text_expert">Expert</string>
     <string name="title_activity_word_list_">Word List</string>
     <string name="button_next">Next</string>
+    <string name="country_prompt">Choose a country</string>
 
-
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+    <string-array name="level_array">
+        <item>All</item>
+        <item>Basic</item>
+        <item>Advance</item>
+        <item>Expert</item>
+    </string-array>
+    <string-array name="status_array">
+        <item>All</item>
+        <item>Learned</item>
+        <item>Not learn</item>
     </string-array>
     <string name="title_activity_lesson_advance_activity">lesson_advance_activity</string>
     <string name="title_activity_lesson_expert_activity">Lesson_expert_activity</string>
