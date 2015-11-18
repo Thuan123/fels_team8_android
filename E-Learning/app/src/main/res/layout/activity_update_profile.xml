@@ -52,6 +52,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/recshape"
             android:focusable="true"
+            android:password="true"
             android:hint="Old Password"
             android:paddingLeft="10dp"
             android:singleLine="true"
@@ -75,6 +76,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/recshape"
             android:hint="New Password"
+            android:password="true"
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:textColor="@android:color/black"
@@ -97,6 +99,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/recshape"
             android:hint="Retype password"
+            android:password="true"
             android:paddingLeft="10dp"
             android:singleLine="true"
             android:textColor="@android:color/black"
@@ -141,10 +144,15 @@
                 android:text="Avatar"
                 android:textColor="#039BE5"
                 android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:background="@drawable/recshape"
+                android:padding="2dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/avata" />
         </RelativeLayout>
     </LinearLayout>
 
