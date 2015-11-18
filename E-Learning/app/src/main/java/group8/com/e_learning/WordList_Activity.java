@@ -63,6 +63,7 @@ public class WordList_Activity extends AppCompatActivity
         JSONArray jsonArray = jsonObject.getJSONArray("list");// thay list = tag name cua list trong api nhe
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
+
             //tiep theo lay cac du lieu trong object chuyen vao result nhe
         }
         return result;

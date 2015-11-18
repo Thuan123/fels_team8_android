@@ -20,16 +20,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
                                 Elearning.COLUMN_CREATE_AT + TEXT_TYPE + COMMA_SEP +
                                 Elearning.COLUMN_UPDATE_AT + TEXT_TYPE +" )";
-    /*private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + ELearningDB.Elearning.TABLE_NAME + " (" +
-                    Elearning._ID + " INTEGER PRIMARY KEY," +
-                    Elearning.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA_SEP +
-                    Elearning.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
-    ... // Any other options for the CREATE command
-            " )";*/
 
-   // private static final String SQL_DELETE_ENTRIES =
-     //       "DROP TABLE IF EXISTS " + Elearning.TABLE_NAME;
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "ELearning.db";

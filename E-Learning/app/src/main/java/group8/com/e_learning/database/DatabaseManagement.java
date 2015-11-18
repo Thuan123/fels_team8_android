@@ -48,6 +48,5 @@ public class DatabaseManagement {
         result.setPassWord(cursor.getString(cursor.getColumnIndex(ELearningDB.Elearning.COLUMN_USER_PASS)));
         return result;
 
-
     }
 }
