@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,11 +19,20 @@ public class Login_Activity extends Activity
         implements EConnect.OnConnected, View.OnClickListener {
 
     private JSONObject jsonObject;
+    private TextView tvNoti;
+    private EditText etEmailLogin, etPasswordLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initView();
+    }
+
+    private void initView() {
+        tvNoti = (TextView) findViewById(R.id.tv_noti);
+        etEmailLogin = (EditText) findViewById(R.id.et_email_login);
+        etPasswordLogin = (EditText) findViewById(R.id.et_password_login);
     }
 
     @Override
@@ -45,13 +56,29 @@ public class Login_Activity extends Activity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
-                startActivity(intent);
+                if (checkLogin()) {
+                    Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
+                    startActivity(intent);
+                } else {
+                    tvNoti.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.tv_create:
                 Intent intentRegister = new Intent(Login_Activity.this, Register_Activity.class);
                 startActivity(intentRegister);
                 break;
         }
+    }
+
+    private boolean checkLogin() {
+        if (etEmailLogin.getText().toString().isEmpty()) {
+            etEmailLogin.requestFocus();
+            return false;
+        }
+        if (etPasswordLogin.getText().toString().isEmpty()) {
+            etPasswordLogin.requestFocus();
+            return false;
+        }
+        return true;
     }
 }

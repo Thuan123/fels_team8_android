@@ -1,5 +1,6 @@
 package group8.com.e_learning;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,29 +22,30 @@ import java.util.ArrayList;
 import group8.com.e_learning.network.EConnect;
 
 
-public class WordList_Activity extends AppCompatActivity
-        implements EConnect.OnConnected {
+public class WordList_Activity extends Activity
+        implements AdapterView.OnItemSelectedListener, EConnect.OnConnected {
     private JSONObject jsonObject;
-    Spinner spLevel, spStatus;
+    private Spinner spLevel, spStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
-        //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-        // setSupportActionBar(myToolbar);
         initSpiner();
     }
 
     private void initSpiner() {
         spLevel = (Spinner) findViewById(R.id.sp_level);
-        spStatus = (Spinner) findViewById(R.id.sp_status);
-
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.level_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.checked_text_view);
         spLevel.setAdapter(adapter);
+        spLevel.setOnItemSelectedListener(this);
 
+        spStatus = (Spinner) findViewById(R.id.sp_status);
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.status_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.checked_text_view);
         spStatus.setAdapter(adapter1);
+        spStatus.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -97,8 +100,19 @@ public class WordList_Activity extends AppCompatActivity
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
 
+
             //tiep theo lay cac du lieu trong object chuyen vao result nhe
         }
         return result;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
