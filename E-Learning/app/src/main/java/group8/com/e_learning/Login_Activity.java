@@ -83,7 +83,7 @@ public class Login_Activity extends Activity
        // user = getUsetInfo.getUserInfo(null);
         PostInfo postInfo = new PostInfo(this);
         try {
-            postInfo.execute(Constant.API_LOGIN, email.getText().toString(), password.getText().toString(), Constant.LOGIN_SESSION);
+            postInfo.execute(Constant.API_LOGIN, etEmailLogin.getText().toString(), etPasswordLogin.getText().toString(), Constant.LOGIN_SESSION);
         }
         catch(Exception e)
         {
