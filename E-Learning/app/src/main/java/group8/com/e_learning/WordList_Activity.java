@@ -96,7 +96,7 @@ public class WordList_Activity extends Activity
     {
         try {
             jsonObject = new JSONObject(Constant.API_WORD);
-            //code vao day
+            //code vao day, cac thao tac nhu  getlist...
         }
         catch(JSONException e)
         {

@@ -9,11 +9,11 @@ public class Application extends android.app.Application {
 
     private static Application instance;
 
-    public Application() {
-        instance = this;
-    }
+
 
     public static Context getInstance() {
+        if (instance == null)
+                instance = new Application();
         return instance;
     }
 
