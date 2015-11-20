@@ -28,6 +28,96 @@ public class SharedPreferencesHelper {
         return instance;
     }
 
+    public void setUser1Email(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user1_email", email);
+        edit.apply();
+    }
+
+    public String getUser1Email()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user1_email",null);
+    }
+
+    public void setUser2Email(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user2_email", email);
+        edit.apply();
+    }
+
+    public String getUser2Email()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user2_email",null);
+    }
+
+
+
+    public void setUser1Password(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user1_pass", email);
+        edit.apply();
+    }
+
+    public String getUser1Pass()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user1_pass",null);
+    }
+
+
+    public void setUser2Password(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user2_pass", email);
+        edit.apply();
+    }
+
+    public String getUser2Pass()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user2_pass",null);
+    }
+
+    public void setUser1Name(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user1_name", email);
+        edit.apply();
+    }
+
+    public String getUser1Name()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user1_name",null);
+    }
+
+
+
+
+    public void setUser2Name(String email)
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo",0);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("user2_name", email);
+        edit.apply();
+    }
+
+    public String getUser2Name()
+    {
+        SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("user2_name",null);
+    }
+
        /* public boolean getCheckLogin() {
             SharedPreferences sharedPreferences = Application.getInstance().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
             return sharedPreferences.getBoolean("CHECK_LOGIN", false);

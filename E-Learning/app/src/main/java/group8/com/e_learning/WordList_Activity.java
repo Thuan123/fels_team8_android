@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.network.EConnect;
 
 
@@ -31,6 +32,9 @@ public class WordList_Activity extends AppCompatActivity
         setContentView(R.layout.activity_word_list_);
         //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
         // setSupportActionBar(myToolbar);
+
+        //new EConnect(this).execute(Constant.API_WORD);
+        hanglerJsonObject();
         initSpiner();
     }
 
@@ -85,10 +89,23 @@ public class WordList_Activity extends AppCompatActivity
         }
     }
 
+    private void hanglerJsonObject()
+    {
+        try {
+            jsonObject = new JSONObject(Constant.API_WORD);
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        //code vao day
+    }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
+        //code vao day de hien thi du lieu nhe.
     }
 
     private ArrayList<Word> getList() throws JSONException {
