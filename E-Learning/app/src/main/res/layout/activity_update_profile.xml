@@ -89,6 +89,7 @@
                 android:singleLine="true"
                 android:text="nguyenvana@gmail.com"
                 android:textColor="@android:color/black"
+                android:id="@+id/et_email_login"
                 android:textSize="16sp" />
 
             <TextView

@@ -82,6 +82,7 @@
                 android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/et_email_login"
                 android:textSize="16sp" />
 
             <TextView
@@ -105,6 +106,7 @@
                 android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/et_password_login"
                 android:textSize="16sp" />
 
             <TextView
@@ -128,6 +130,7 @@
                 android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/et_password_confirmation_login"
                 android:textSize="16sp" />
 
             <TextView
@@ -150,6 +153,7 @@
                 android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/darker_gray"
+                android:id="@+id/et_name_login"
                 android:textSize="16sp" />
 
             <RelativeLayout

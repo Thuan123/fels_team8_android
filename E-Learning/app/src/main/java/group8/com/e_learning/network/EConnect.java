@@ -1,6 +1,7 @@
 package group8.com.e_learning.network;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +30,8 @@ public class EConnect extends AsyncTask<String, String, JSONObject>{
             URL url = new URL(api[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            conn.connect();
+            Log.d("tag", conn.getResponseMessage());
             InputStream inputStream = conn.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line = "";
@@ -38,6 +41,7 @@ public class EConnect extends AsyncTask<String, String, JSONObject>{
             conn.disconnect();
 
             object = new JSONObject(response);
+
         }
         catch(Exception e)
         {
@@ -50,7 +54,7 @@ public class EConnect extends AsyncTask<String, String, JSONObject>{
     @Override
     protected void onPostExecute(JSONObject result) {
         super.onPostExecute(result);
-
+      //  Log.d("no tag",result.toString());
         if (mOnConnected != null) {
             mOnConnected.getJson(result);
         }

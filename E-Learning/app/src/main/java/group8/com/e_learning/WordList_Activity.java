@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.network.EConnect;
 
 
@@ -31,6 +32,9 @@ public class WordList_Activity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
+        //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
+        // setSupportActionBar(myToolbar);
+        hanglerJsonObject();
         initSpiner();
     }
 
@@ -88,10 +92,24 @@ public class WordList_Activity extends Activity
         }
     }
 
+    private void hanglerJsonObject()
+    {
+        try {
+            jsonObject = new JSONObject(Constant.API_WORD);
+            //code vao day
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        
+    }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
+       
     }
 
     private ArrayList<Word> getList() throws JSONException {
@@ -99,7 +117,6 @@ public class WordList_Activity extends Activity
         JSONArray jsonArray = jsonObject.getJSONArray("list");// thay list = tag name cua list trong api nhe
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
-
 
             //tiep theo lay cac du lieu trong object chuyen vao result nhe
         }
