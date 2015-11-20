@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Created by tranngoclinh on 11/15/15.
  */
 public class Profile_Activity extends Activity implements View.OnClickListener {
-
-    private TextView name,email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +19,16 @@ public class Profile_Activity extends Activity implements View.OnClickListener {
 
         email = (TextView)findViewById(R.id.text_email);
         email.setText(getIntent().getStringExtra("email"));
+        setRecycleView();
+    }
+    private void setRecycleView(){
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rv_learned);
+        // Create adapter passing in the sample user data
+        ItemLearnedAdapter adapter = new ItemLearnedAdapter(ItemLearned.createItemLearned(20));
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
