@@ -85,6 +85,9 @@ public class PostInfo extends AsyncTask<String,String,JSONObject>  {
             writer.flush();
             writer.close();
 
+            object = getJson(conn);
+            Log.d("Post info",object.toString());
+
             int responseCode = conn.getResponseCode();
             if (responseCode == 200) object = getJson(conn);
             else object = null;
