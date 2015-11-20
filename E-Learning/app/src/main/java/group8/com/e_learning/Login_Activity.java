@@ -61,6 +61,8 @@ public class Login_Activity extends Activity
 
     private void initView() {
         tvNoti = (TextView) findViewById(R.id.tv_noti);
+        tvNoti.setVisibility(View.GONE);
+
         etEmailLogin = (EditText) findViewById(R.id.et_email_login);
         etPasswordLogin = (EditText) findViewById(R.id.et_password_login);
         btn_login = (Button)findViewById(R.id.btn_login);
