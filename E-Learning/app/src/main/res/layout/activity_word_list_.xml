@@ -50,30 +50,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:padding="5dp">
 
         <Spinner
             android:id="@+id/sp_level"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#EEEEEE"
-            android:entries="@array/level_array"
-            android:popupBackground="#EEEEEE"
-            android:spinnerMode="dropdown" />
+            android:popupBackground="#EEEEEE" />
 
         <Spinner
             android:id="@+id/sp_status"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:background="#EEEEEE"
-            android:entries="@array/status_array"
-            android:popupBackground="#EEEEEE"
-            android:spinnerMode="dropdown" />
+            android:popupBackground="#EEEEEE" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:width="1dp"
+        android:background="@android:color/black" />
 
 
 </LinearLayout>

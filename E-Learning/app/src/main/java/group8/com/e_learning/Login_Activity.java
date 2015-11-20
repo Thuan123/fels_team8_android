@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import android.widget.TextView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,19 +26,24 @@ public class Login_Activity extends Activity
         implements PostInfo.OnConnected, View.OnClickListener {
 
     private JSONObject jsonObject;
-    private EditText email,password;
+    private TextView tvNoti;
+    private EditText etEmailLogin, etPasswordLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        email = (EditText)findViewById(R.id.et_email_login);
-        password = (EditText)findViewById(R.id.et_password_login);
+        initView();
+    }
+
+    private void initView() {
+        tvNoti = (TextView) findViewById(R.id.tv_noti);
+        etEmailLogin = (EditText) findViewById(R.id.et_email_login);
+        etPasswordLogin = (EditText) findViewById(R.id.et_password_login);
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
-
         this.jsonObject = jsonObject;
         if (jsonObject == null)
             Toast.makeText(this, "Cannot login",Toast.LENGTH_LONG).show();//cho nay thay toast = dong chu do bao rang khogn dang nhap dk
@@ -94,13 +101,26 @@ public class Login_Activity extends Activity
             case R.id.btn_login:
                 //Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
                 //startActivity(intent);
-                login();
+                if (checkLogin())
+                    login();
+                else tvNoti.setVisibility(View.VISIBLE);
                 break;
             case R.id.tv_create:
                 Intent intentRegister = new Intent(Login_Activity.this, Register_Activity.class);
                 startActivity(intentRegister);
-
                 break;
         }
+    }
+
+    private boolean checkLogin() {
+        if (etEmailLogin.getText().toString().isEmpty()) {
+            etEmailLogin.requestFocus();
+            return false;
+        }
+        if (etPasswordLogin.getText().toString().isEmpty()) {
+            etPasswordLogin.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
