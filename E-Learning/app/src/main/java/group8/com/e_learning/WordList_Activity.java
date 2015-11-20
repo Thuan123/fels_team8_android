@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +38,17 @@ public class WordList_Activity extends Activity
         // setSupportActionBar(myToolbar);
         hanglerJsonObject();
         initSpiner();
+        initRecycleWord();
+    }
+
+    private void initRecycleWord() {
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rv_words);
+        // Create adapter passing in the sample user data
+        ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(20));
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initSpiner() {
@@ -92,24 +105,21 @@ public class WordList_Activity extends Activity
         }
     }
 
-    private void hanglerJsonObject()
-    {
+    private void hanglerJsonObject() {
         try {
             jsonObject = new JSONObject(Constant.API_WORD);
             //code vao day, cac thao tac nhu  getlist...
-        }
-        catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        
+
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
-       
+
     }
 
     private ArrayList<Word> getList() throws JSONException {
