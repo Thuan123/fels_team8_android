@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,22 +60,7 @@ public class WordList_Activity extends Activity
         return true;
     }
 
-  /*  @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.button_next) {
-            ;
-            Intent intent = new Intent(this, Category_activity.class);
-            startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
-    } */
 
 
     private void tapPDF() {
@@ -94,27 +80,30 @@ public class WordList_Activity extends Activity
 
     private void hanglerJsonObject()
     {
-        try {
-            jsonObject = new JSONObject(Constant.API_WORD);
+        /*try {
+            jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
+
         }
         catch(JSONException e)
         {
             e.printStackTrace();
-        }
-
+        }*/
+        EConnect eConnect = new EConnect(this);
+        eConnect.execute(Constant.API_WORD_ONLINE);
         
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
-       
+        Log.d("String",jsonObject.toString());
+       //neu co api online thi code tiep vao day
     }
 
     private ArrayList<Word> getList() throws JSONException {
         ArrayList<Word> result = new ArrayList<>();
-        JSONArray jsonArray = jsonObject.getJSONArray("list");// thay list = tag name cua list trong api nhe
+        JSONArray jsonArray = jsonObject.getJSONArray("words");// thay list = tag name cua list trong api nhe
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
 
