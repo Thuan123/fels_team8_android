@@ -1,5 +1,6 @@
 package group8.com.e_learning;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.Toolbar;
 
-public class Category_activity extends AppCompatActivity {
+public class Category_activity extends Activity {
 
     public static final String KEY_TITLE = "key_title";
 
