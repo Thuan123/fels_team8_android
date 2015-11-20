@@ -1,14 +1,17 @@
 package group8.com.e_learning;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import group8.com.e_learning.common.Constant;
@@ -27,6 +30,7 @@ public class Register_Activity extends Activity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Constant.context = this;
         email = (EditText)findViewById(R.id.et_email_login);
         pass = (EditText)findViewById(R.id.et_password_login);
         fullName=(EditText)findViewById(R.id.et_name_login);
@@ -48,10 +52,11 @@ public class Register_Activity extends Activity implements View.OnClickListener,
         preferencesHelper.setUser1Name(fullName.getText().toString());*/
 
         PostInfo postInfo = new PostInfo(this);
-        postInfo.execute(Constant.API_SIGNUP, email.getText().toString(), pass.getText().toString(),Constant.SIGNUP_SESSION,
-                            fullName.getText().toString()
-                            , passConfirmation.getText().toString());
-        this.finish();
+        postInfo.execute(Constant.API_SIGNUP, email.getText().toString(), pass.getText().toString(), Constant.SIGNUP_SESSION,
+                fullName.getText().toString()
+                , passConfirmation.getText().toString());
+
+
 
 
 
@@ -72,13 +77,25 @@ public class Register_Activity extends Activity implements View.OnClickListener,
     }
 
     @Override
-    public void getJson(JSONObject jsonObject) {
-        this.jsonObject = jsonObject;
-        if(jsonObject == null)
-            Toast.makeText(this, "cannot registry",Toast.LENGTH_LONG).show();//cho nay cau thay bang hien dong chu do thong bao khong dang ky dk nhe
-        else
+    public void getJson(JSONObject JsonObject) {
+        try {
+            this.jsonObject = JsonObject;
+            //Log.d("no more", JsonObject.toString());
+            if (jsonObject == null)
+                Toast.makeText(this, "cannot registry", Toast.LENGTH_LONG).show();//cho nay cau thay bang hien dong chu do thong bao khong dang ky dk nhe
+            else {
+                //code vao day
+                Toast.makeText(this, "Registry successful", Toast.LENGTH_LONG).show();
+                SharedPreferencesHelper helper = SharedPreferencesHelper.getInstance();
+                helper.setUser1Email(email.getText().toString());
+                helper.setUser1Password(pass.getText().toString());
+                Constant.registerDone = true;
+                this.finish();
+            }
+        }
+        catch(Exception e)
         {
-            //code vao day
+            e.printStackTrace();
         }
 
     }
