@@ -100,13 +100,13 @@ public class Login_Activity extends Activity
     @Override
     public void getJson(JSONObject JsonObject) {
         try {
-            this.jsonObject = JsonObject.getJSONObject("user");
-            if (jsonObject == null) {
+
+            if (JsonObject == null) {
                 //Toast.makeText(this, "Cannot login",Toast.LENGTH_LONG).show();//cho nay thay toast = dong chu do bao rang khogn dang nhap dk
                 makeNoti();
             } else {
                 //code vao day nhe de lam chuc nang sau khi login
-
+                this.jsonObject = JsonObject.getJSONObject("user");
                 String name = jsonObject.getString("name");
                 saveDb();
                 startActivity(makeNewIntent(name));
