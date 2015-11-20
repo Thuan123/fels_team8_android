@@ -11,7 +11,8 @@ public class Constant {
 
 
     public static final String API_LOGIN = "https://powerful-beach-9556.herokuapp.com/login.json";
-    public static final String API_SIGNUP = "https://protected-earth-1676.herokuapp.com/users.json";
+    //public static final String API_SIGNUP = "https://protected-earth-1676.herokuapp.com/users.json";
+    public static final String API_SIGNUP = "https://powerful-beach-9556.herokuapp.com/signup.json";
     public static final String LOGIN_SESSION = "session";
     public static final String SIGNUP_SESSION = "user";
     public static final String WORD_SESSION = "words";
