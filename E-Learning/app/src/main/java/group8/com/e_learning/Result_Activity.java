@@ -8,10 +8,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Result_Activity extends Activity {
+public class Result_Activity extends Activity implements View.OnClickListener {
 
 
     private String updateTextLesson() {
@@ -58,5 +59,14 @@ public class Result_Activity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_ok:
+                finish();
+                break;
+        }
     }
 }

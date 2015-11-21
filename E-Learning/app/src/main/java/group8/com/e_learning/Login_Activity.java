@@ -46,13 +46,12 @@ public class Login_Activity extends Activity
 
     }
 
-    private void ifRegisterDone()
-    {
+    private void ifRegisterDone() {
 
         SharedPreferencesHelper helper = SharedPreferencesHelper.getInstance();
-        if(!Constant.registerDone) return;
+        if (!Constant.registerDone) return;
         Constant.registerDone = false;
-        Log.d("vo here","vo here");
+        Log.d("vo here", "vo here");
         etEmailLogin.setText(helper.getUser1Email());
         etPasswordLogin.setText(helper.getUser1Pass());
         btn_login.requestFocus();
@@ -65,24 +64,22 @@ public class Login_Activity extends Activity
 
         etEmailLogin = (EditText) findViewById(R.id.et_email_login);
         etPasswordLogin = (EditText) findViewById(R.id.et_password_login);
-        btn_login = (Button)findViewById(R.id.btn_login);
+        btn_login = (Button) findViewById(R.id.btn_login);
     }
 
-    private Intent makeNewIntent(String name) throws JSONException
-    {
+    private Intent makeNewIntent(String name) throws JSONException {
         Intent intent = new Intent(this, Profile_Activity.class);
         String
                 email = etEmailLogin.getText().toString(),
                 pass = etPasswordLogin.getText().toString();
-        intent.putExtra("email",email);
-        intent.putExtra("password",pass);
+        intent.putExtra("email", email);
+        intent.putExtra("password", pass);
         intent.putExtra("name", name);
 
         return intent;
     }
 
-    private void saveDb() throws JSONException
-    {
+    private void saveDb() throws JSONException {
         String name = jsonObject.getString("name"),
                 email = etEmailLogin.getText().toString(),
                 pass = etPasswordLogin.getText().toString();
@@ -92,9 +89,8 @@ public class Login_Activity extends Activity
         helper.setUser1Password(pass);
     }
 
-    private boolean isNetworkConnect()
-    {
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    private boolean isNetworkConnect() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
@@ -114,17 +110,14 @@ public class Login_Activity extends Activity
                 startActivity(makeNewIntent(name));
             }
 
-        }
-        catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
     }
 
-    private void makeNoti()
-    {
+    private void makeNoti() {
         tvNoti.setText("Email or password is incorrected");
         tvNoti.setVisibility(View.VISIBLE);
     }
@@ -140,15 +133,12 @@ public class Login_Activity extends Activity
         return jsonObject.getString("password");
     }
 
-    private boolean checkAuthenicationOffline(String email, String pass)
-    {
+    private boolean checkAuthenicationOffline(String email, String pass) {
         return email.equals(etEmailLogin.getText().toString())
                 && pass.equals(etPasswordLogin.getText().toString());
     }
 
-    private void login()
-    {
-
+    private void login() {
         try {
             if (isNetworkConnect()) {
                 PostInfo postInfo = new PostInfo(this);
@@ -156,23 +146,17 @@ public class Login_Activity extends Activity
                 postInfo.execute(Constant.API_LOGIN, etEmailLogin.getText().toString(), etPasswordLogin.getText().toString(), Constant.LOGIN_SESSION);
 
 
-            }
-
-            else
-            {
+            } else {
                 SharedPreferencesHelper helper = SharedPreferencesHelper.getInstance().getInstance();
                 String email = helper.getUser1Email(),
                         pass = helper.getUser1Pass();
 
                 if (checkAuthenicationOffline(email, pass)) {
                     startActivity(makeNewIntent(helper.getUser1Name()));
-                }
-                else
+                } else
                     makeNoti();
             }
-        }
-        catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -184,11 +168,11 @@ public class Login_Activity extends Activity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                //Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
-                //startActivity(intent);
-                if (checkLogin())
-                    login();
-                else tvNoti.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
+                startActivity(intent);
+//                if (checkLogin())
+//                    login();
+//                else tvNoti.setVisibility(View.VISIBLE);
                 break;
             case R.id.tv_create:
                 Intent intentRegister = new Intent(Login_Activity.this, Register_Activity.class);

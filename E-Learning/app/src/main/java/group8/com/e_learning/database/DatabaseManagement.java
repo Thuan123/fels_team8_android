@@ -3,7 +3,7 @@ package group8.com.e_learning.database;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import group8.com.e_learning.User;
+import group8.com.e_learning.entities.User;
 
 /**
  * Created by nomore on 17/11/2015.

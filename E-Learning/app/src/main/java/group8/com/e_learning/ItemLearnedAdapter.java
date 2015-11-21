@@ -3,6 +3,7 @@ package group8.com.e_learning;
 /**
  * Created by tranngoclinh on 11/20/15.
  */
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,8 +63,17 @@ public class ItemLearnedAdapter extends
         TextView tvDat = holder.tvDate;
         tvDat.setText(itemLearned.getDateLearned());
 
-        ImageView imageView =holder.ivView;
-        imageView.setImageResource(R.mipmap.ic_launcher);
+        ImageView imageView = holder.ivView;
+        String str = tvCate.getText().toString();
+        if (str.charAt(str.length() - 2) == 'c') {
+            imageView.setImageResource(R.drawable.basic);
+        }
+        if (str.charAt(str.length() - 2) == 'e') {
+            imageView.setImageResource(R.drawable.advance);
+        }
+        if (str.charAt(str.length() - 2) == 't') {
+            imageView.setImageResource(R.drawable.expert);
+        }
     }
 
     @Override
