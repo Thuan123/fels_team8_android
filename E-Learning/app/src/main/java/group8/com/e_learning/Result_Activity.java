@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Result_Activity extends Activity {
-
-    TextView textLesson;
+public class Result_Activity extends Activity implements View.OnClickListener {
 
 
     private String updateTextLesson() {
@@ -24,9 +25,18 @@ public class Result_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_);
-        textLesson = (TextView) findViewById(R.id.text_lesson);
-        textLesson.setText(updateTextLesson());
         Toast.makeText(this, updateTextLesson(), Toast.LENGTH_LONG).show();
+        initResultRecycle();
+    }
+
+    private void initResultRecycle() {
+        RecyclerView rvResult = (RecyclerView) findViewById(R.id.rv_result);
+        ItemResultAdapter adapter = new ItemResultAdapter(ItemResult.createItemResult(20));
+        // Attach the adapter to the recyclerview to populate items
+        rvResult.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvResult.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
@@ -49,5 +59,14 @@ public class Result_Activity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_ok:
+                finish();
+                break;
+        }
     }
 }

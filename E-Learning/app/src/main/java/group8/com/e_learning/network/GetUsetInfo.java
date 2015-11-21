@@ -2,8 +2,8 @@ package group8.com.e_learning.network;
 
 import org.json.JSONObject;
 
-import group8.com.e_learning.User;
 import group8.com.e_learning.common.SharedPreferencesHelper;
+import group8.com.e_learning.entities.User;
 
 /**
  * Created by nomore on 19/11/2015.

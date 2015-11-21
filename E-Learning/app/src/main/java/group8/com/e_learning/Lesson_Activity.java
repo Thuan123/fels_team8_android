@@ -51,8 +51,15 @@ public class Lesson_Activity extends Activity implements View.OnClickListener {
             case R.id.btn_ans3:
             case R.id.btn_ans4:
                 checkAns(v);
+                callResult();
                 break;
         }
+    }
+
+    private void callResult() {
+        Intent intent = new Intent(Lesson_Activity.this, Result_Activity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void checkAns(View v) {

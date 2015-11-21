@@ -67,7 +67,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/recshape"
                 android:padding="5dp"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/basic" />
 
             <LinearLayout
                 android:layout_width="1dp"
@@ -127,7 +128,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/recshape"
                 android:padding="5dp"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/advance" />
 
             <LinearLayout
                 android:layout_width="1dp"
@@ -187,7 +189,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/recshape"
                 android:padding="5dp"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/expert" />
 
             <LinearLayout
                 android:layout_width="1dp"
