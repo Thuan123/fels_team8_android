@@ -88,6 +88,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_basic"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
@@ -97,10 +98,12 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_word_basic"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:text="word, word, word, ..."
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -149,6 +152,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_advance"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
@@ -158,10 +162,12 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_word_advance"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:text="word, word, word, ..."
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -210,6 +216,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_expert"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
@@ -219,10 +226,12 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/tv_word_expert"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:singleLine="true"
                     android:text="word, word, word, ..."
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />

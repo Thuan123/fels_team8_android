@@ -32,6 +32,7 @@ public class Lesson_Activity extends Activity implements View.OnClickListener {
 
     private void doneLesson() {
         Toast.makeText(this, "Lesson done", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

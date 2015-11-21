@@ -11,11 +11,21 @@ import java.util.List;
 public class ItemResult {
     private String word, meanning;
     private ImageView imageView;
+    private boolean result;
 
-    public ItemResult(String word, String meanning, ImageView imageView) {
+    public ItemResult(String word, String meanning, ImageView imageView, boolean result) {
         this.imageView = imageView;
         this.meanning = meanning;
         this.word = word;
+        this.result = result;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
     }
 
     public ImageView getImageView() {
@@ -35,7 +45,7 @@ public class ItemResult {
     public static List<ItemResult> createItemResult(int numWord) {
         List<ItemResult> itemList = new ArrayList<ItemResult>();
         for (int i = 1; i <= numWord; i++) {
-            itemList.add(new ItemResult("abc " + lastItem, "VietNamese", null));
+            itemList.add(new ItemResult("abc " + lastItem, "VietNamese", null, false));
         }
         return itemList;
     }

@@ -32,9 +32,7 @@ public class Result_Activity extends Activity implements View.OnClickListener {
     private void initResultRecycle() {
         RecyclerView rvResult = (RecyclerView) findViewById(R.id.rv_result);
         ItemResultAdapter adapter = new ItemResultAdapter(ItemResult.createItemResult(20));
-        // Attach the adapter to the recyclerview to populate items
         rvResult.setAdapter(adapter);
-        // Set layout manager to position the items
         rvResult.setLayoutManager(new LinearLayoutManager(this));
 
     }

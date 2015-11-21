@@ -60,7 +60,11 @@ public class ItemResultAdapter extends
         tvMean.setText(itemResult.getMeanning());
 
         ImageView ivRe = holder.imageView;
-        ivRe.setImageResource(R.mipmap.ic_launcher);
+        if(itemResult.isResult()) {
+            ivRe.setImageResource(R.drawable.ic_true);
+        }else {
+            ivRe.setImageResource(R.drawable.ic_false);
+        }
     }
 
     @Override
