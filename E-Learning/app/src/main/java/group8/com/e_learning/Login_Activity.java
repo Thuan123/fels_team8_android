@@ -104,7 +104,8 @@ public class Login_Activity extends Activity
                 makeNoti();
             } else {
                 //code vao day nhe de lam chuc nang sau khi login
-                this.jsonObject = JsonObject.getJSONObject("user");
+                this.jsonObject = JsonObject;
+                //this.jsonObject = JsonObject.getJSONObject("user");
                 String name = jsonObject.getString("name");
                 saveDb();
                 startActivity(makeNewIntent(name));

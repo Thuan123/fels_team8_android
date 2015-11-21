@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -154,26 +153,30 @@ public class WordList_Activity extends Activity
         }
     }
 
-    private void hanglerJsonObject() {
-        try {
-            jsonObject = new JSONObject(Constant.API_WORD);
+    private void hanglerJsonObject()
+    {
+        /*try {
+            jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
-
+        catch(JSONException e)
+        {
+            e.printStackTrace();
+        }*/
+        EConnect eConnect = new EConnect(this);
+        eConnect.execute(Constant.API_WORD_ONLINE);
+        
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
-
+       
     }
 
     private ArrayList<Word> getList() throws JSONException {
         ArrayList<Word> result = new ArrayList<>();
-        JSONArray jsonArray = jsonObject.getJSONArray("list");// thay list = tag name cua list trong api nhe
+        JSONArray jsonArray = jsonObject.getJSONArray("words");// thay list = tag name cua list trong api nhe
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
 
