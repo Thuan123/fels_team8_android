@@ -17,8 +17,13 @@ public class Constant {
     public static final String SIGNUP_SESSION = "user";
     public static final String WORD_SESSION = "words";
     public static final String PARA_EMAIL = "";
-        public static final String PARA_PASS = "";
+    public static final String PARA_PASS = "";
     public static boolean registerDone = false;
     public static Context context = null;
+    public static final int CATEGORY_BASIC = 0;
+    public static final int CATEGORY_ADVANCE = 1;
+    public static final int CATEGORY_EXPERT = 2;
+    public static final int LEARNED = 0;
+    public static final int NOT_LEARNED = 1;
 
 }
