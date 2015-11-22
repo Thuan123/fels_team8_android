@@ -13,11 +13,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.Buffer;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import group8.com.e_learning.common.Application;
@@ -57,6 +59,7 @@ public class PostInfo extends AsyncTask<String,String,JSONObject>  {
         try {
             URL url = new URL(api[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
             conn.setDoOutput(true);
             conn.setDoInput(true);
 
@@ -85,13 +88,16 @@ public class PostInfo extends AsyncTask<String,String,JSONObject>  {
             writer.flush();
             writer.close();
 
-            object = getJson(conn);
-            Log.d("Post info",object.toString());
-
             int responseCode = conn.getResponseCode();
+            //checkRsponseHeader(conn);
             if (responseCode == 200) object = getJson(conn);
             else object = null;
+           // Log.d("Header", "token = " + getHeaderSession(conn));
+
+            if (api.length < 5)getHeaderSession(conn);
             Log.d("Post info",object.toString());
+            //Log.d("Headesr","nothing");
+            //Log.d("Header","token = " + Constant.token);
 
         }
         catch(Exception e)
@@ -100,6 +106,31 @@ public class PostInfo extends AsyncTask<String,String,JSONObject>  {
         }
 
         return object;
+    }
+
+    private void checkRsponseHeader(HttpURLConnection conn) {
+        Map<String,List<String>> map = conn.getHeaderFields();
+        for(Map.Entry<String,List<String>> entry:map.entrySet())
+        {
+            Log.d(entry.getKey(), entry.getValue().toString());
+        }
+    }
+
+    private void getHeaderSession(HttpURLConnection conn) throws Exception
+    {
+
+        String cookies =  conn.getHeaderField(Constant.LOGIN_TOKEN);
+        //Constant.token = cookies;
+        Constant.cookiesManager.getCookieStore().add(null, HttpCookie.parse(cookies).get(0));
+
+       /* int startIndex = cookies.indexOf('=') + 1,
+            endIndex = cookies.indexOf(';');
+        return cookies.substring(startIndex,endIndex);*/
+
+
+
+
+
     }
 
     @Override

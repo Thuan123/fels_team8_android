@@ -18,6 +18,8 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.CookieHandler;
+
 import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.common.SharedPreferencesHelper;
 import group8.com.e_learning.network.EConnect;
@@ -39,7 +41,11 @@ public class Login_Activity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Constant.context = this;
+
+        CookieHandler.setDefault(Constant.cookiesManager) ;
+
         initView();
         ifRegisterDone();
 
@@ -104,7 +110,7 @@ public class Login_Activity extends Activity
                 makeNoti();
             } else {
                 //code vao day nhe de lam chuc nang sau khi login
-                this.jsonObject = JsonObject;
+                this.jsonObject = JsonObject.getJSONObject(Constant.PARA_USER);
                 //this.jsonObject = JsonObject.getJSONObject("user");
                 String name = jsonObject.getString("name");
                 saveDb();
@@ -169,11 +175,11 @@ public class Login_Activity extends Activity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
-                startActivity(intent);
-//                if (checkLogin())
-//                    login();
-//                else tvNoti.setVisibility(View.VISIBLE);
+                //Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
+                //startActivity(intent);
+                if (checkLogin())
+                    login();
+                else tvNoti.setVisibility(View.VISIBLE);
                 break;
             case R.id.tv_create:
                 Intent intentRegister = new Intent(Login_Activity.this, Register_Activity.class);

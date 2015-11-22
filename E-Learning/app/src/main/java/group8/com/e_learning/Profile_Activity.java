@@ -35,23 +35,27 @@ public class Profile_Activity extends Activity implements View.OnClickListener {
     }
 
     private void createExampleListLession() {
-        listLesson.add(new Lesson(0, "10/10/2013", 1, 12, 1));
-        listLesson.add(new Lesson(1, "10/10/2013", 2, 13, 1));
-        listLesson.add(new Lesson(2, "10/10/2013", 3, 14, 1));
-        listLesson.add(new Lesson(2, "10/10/2013", 4, 11, 1));
-        listLesson.add(new Lesson(1, "10/10/2013", 5, 12, 1));
-        listLesson.add(new Lesson(0, "10/10/2013", 6, 0, 1));
-        listLesson.add(new Lesson(1, "10/10/2013", 4, 19, 1));
-        listLesson.add(new Lesson(1, "10/10/2013", 2, 9, 1));
-        listLesson.add(new Lesson(2, "10/10/2013", 3, 11, 1));
-        listLesson.add(new Lesson(0, "10/10/2013", 5, 2, 1));
+
+        listLesson.add(new Lesson(0, "10/10/2013", 1, 12, "11/10/2013", 1));
+        listLesson.add(new Lesson(1, "10/10/2013", 2, 13, "11/10/2013", 1));
+        listLesson.add(new Lesson(2, "10/10/2013", 3, 14, "11/10/2013", 1));
+        listLesson.add(new Lesson(2, "10/10/2013", 4, 11, "11/10/2013", 1));
+        listLesson.add(new Lesson(1, "10/10/2013", 5, 12, "11/10/2013", 1));
+        listLesson.add(new Lesson(0, "10/10/2013", 6, 0, "11/10/2013", 1));
+        listLesson.add(new Lesson(1, "10/10/2013", 4, 19, "11/10/2013", 1));
+        listLesson.add(new Lesson(1, "10/10/2013", 2, 9, "11/10/2013", 1));
+        listLesson.add(new Lesson(2, "10/10/2013", 3, 11, "11/10/2013", 1));
+        listLesson.add(new Lesson(0, "10/10/2013", 5, 2, "11/10/2013", 1));
     }
 
     private void setRecycleView() {
-        RecyclerView rvLesson = (RecyclerView) findViewById(R.id.rv_learned);
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rv_learned);
+        // Create adapter passing in the sample user data
         ItemLearnedAdapter adapter = new ItemLearnedAdapter(ItemLearned.createItemLearned(listLesson));
-        rvLesson.setAdapter(adapter);
-        rvLesson.setLayoutManager(new LinearLayoutManager(this));
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override

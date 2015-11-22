@@ -7,7 +7,6 @@ import java.util.List;
 
 import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.entities.Lesson;
-
 import android.util.Log;
 
 import static group8.com.e_learning.common.Constant.*;
@@ -18,12 +17,6 @@ import static group8.com.e_learning.common.Constant.*;
 public class ItemLearned {
     private String categoriesLearned, dateLearned;
     private Image mImage;
-
-    public ItemLearned() {
-        categoriesLearned = "";
-        dateLearned = "";
-        mImage = null;
-    }
 
     public ItemLearned(String categoriesLearned, String dateLearned) {
         this.categoriesLearned = categoriesLearned;

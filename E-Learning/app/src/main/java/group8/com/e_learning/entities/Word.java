@@ -11,6 +11,15 @@ public class Word {
     private String updateAt;
     private int status;
     private WordAnswer[] wordAnswer;
+    private String rightAnswer;
+
+    public void setRightAnswer(String rightAnswer) {
+        this.rightAnswer = rightAnswer;
+    }
+
+    public String getRightAnswer() {
+        return rightAnswer;
+    }
 
     public WordAnswer[] getWordAnswer() {
         return wordAnswer;
@@ -28,7 +37,7 @@ public class Word {
         wordAnswer = new WordAnswer[4];
     }
 
-    public Word(int categoryId, String content, String creatAt, int id, String updateAt, int status, WordAnswer[] wordAnswer) {
+    public Word(int categoryId, String content, String creatAt, int id, String updateAt, int status, WordAnswer[] wordAnswer, String rightAnswer) {
         this.categoryId = categoryId;
         this.content = content;
         this.creatAt = creatAt;
@@ -36,6 +45,7 @@ public class Word {
         this.updateAt = updateAt;
         this.status = status;
         this.wordAnswer = wordAnswer;
+        this.rightAnswer = rightAnswer;
     }
 
     public int getStatus() {

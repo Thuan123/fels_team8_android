@@ -43,7 +43,11 @@ public class ItemLearnedAdapter extends
     public ItemLearnedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
+
+        // Inflate the custom layout
         View learnedView = inflater.inflate(R.layout.item_learned, parent, false);
+
+        // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(learnedView);
         return viewHolder;
     }
@@ -52,6 +56,7 @@ public class ItemLearnedAdapter extends
     public void onBindViewHolder(ViewHolder holder, int position) {
         ItemLearned itemLearned = mItemList.get(position);
 
+        // Set item views based on the data model
         TextView tvCate = holder.tvCategories;
         tvCate.setText(itemLearned.getCategoriesLearned());
 
@@ -59,8 +64,16 @@ public class ItemLearnedAdapter extends
         tvDat.setText(itemLearned.getDateLearned());
 
         ImageView imageView = holder.ivView;
-        imageView.setImageResource(R.mipmap.ic_launcher);
-
+        String str = tvCate.getText().toString();
+        if (str.charAt(str.length() - 2) == 'c') {
+            imageView.setImageResource(R.drawable.basic);
+        }
+        if (str.charAt(str.length() - 2) == 'e') {
+            imageView.setImageResource(R.drawable.advance);
+        }
+        if (str.charAt(str.length() - 2) == 't') {
+            imageView.setImageResource(R.drawable.expert);
+        }
     }
 
     @Override

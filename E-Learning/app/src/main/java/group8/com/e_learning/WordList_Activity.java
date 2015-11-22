@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,9 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.entities.Word;
@@ -30,9 +29,7 @@ public class WordList_Activity extends Activity
     private JSONObject jsonObject;
     private Spinner spLevel, spStatus;
     private ArrayList<Word> listWord = new ArrayList<Word>();
-    private String[] state = {"Cupcake", "Donut", "Eclair", "Froyo",
-            "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellybean",
-            "kitkat"};
+
     private RecyclerView rvWord;
 
     @Override
@@ -43,53 +40,55 @@ public class WordList_Activity extends Activity
         // setSupportActionBar(myToolbar);
 
         initWordExample();
-        hanglerJsonObject();
+        connectNetWork(0, null);//
+        Log.d("API", makeAPI(0, "not learner"));
         initSpiner();
         initRecycleWord();
     }
 
     private void initWordExample() {
+        String rightAnswer = "no rightAnswer";
         WordAnswer[] answer = new WordAnswer[4];
         answer[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", 0, answer));
+        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", 0, answer, rightAnswer));
 
         WordAnswer[] answer1 = new WordAnswer[4];
         answer1[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer1[1] = new WordAnswer("choi", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer1[2] = new WordAnswer("cho meo", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer1[3] = new WordAnswer("chim lon", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Play", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer1));
+        listWord.add(new Word(Constant.CATEGORY_BASIC, "Play", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer1, rightAnswer));
 
         WordAnswer[] answer2 = new WordAnswer[4];
         answer2[0] = new WordAnswer("dang yeu", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer2[1] = new WordAnswer("tot bung", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer2[2] = new WordAnswer("con cho", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer2[3] = new WordAnswer("con meo", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_EXPERT, "Pic", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer2));
+        listWord.add(new Word(Constant.CATEGORY_EXPERT, "Pic", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer2, rightAnswer));
 
         WordAnswer[] answer3 = new WordAnswer[4];
         answer3[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer3[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer3[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer3[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer3));
+        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer3, rightAnswer));
 
         WordAnswer[] answer4 = new WordAnswer[4];
         answer4[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer4[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer4[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer4[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer4));
+        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer4, rightAnswer));
 
         WordAnswer[] answer5 = new WordAnswer[4];
         answer5[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
         answer5[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
         answer5[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
         answer5[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer5));
+        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer5, rightAnswer));
     }
 
     private void initRecycleWord() {
@@ -110,8 +109,8 @@ public class WordList_Activity extends Activity
         spLevel.setOnItemSelectedListener(this);
 
         spStatus = (Spinner) findViewById(R.id.sp_status);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, state);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.status_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.checked_text_view);
         spStatus.setAdapter(adapter1);
         spStatus.setOnItemSelectedListener(this);
     }
@@ -156,7 +155,8 @@ public class WordList_Activity extends Activity
         }
     }
 
-    private void hanglerJsonObject() {
+    private void connectNetWork(int category_id, String type)
+    {
         /*try {
             jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
@@ -166,25 +166,59 @@ public class WordList_Activity extends Activity
             e.printStackTrace();
         }*/
         EConnect eConnect = new EConnect(this);
-        eConnect.execute(Constant.API_WORD_ONLINE);
 
+        eConnect.execute(makeAPI(category_id, type));
+
+    }
+
+    private String makeAPI(Integer categoty_id, String type) {
+
+        if(categoty_id == 0 && type == null) return Constant.API_WORD_ONLINE;
+        if(categoty_id == 0) return Constant.API_WORD_ONLINE + '?' + Constant.PARA_TYPE + '=' + type;
+        if(type == null) return Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString() ;
+
+        return  Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString()  + '&'
+                        + Constant.PARA_TYPE + '=' + type;
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
+        doSomeThingWithListWord(getList());
+    }
+
+    private Word getWord(JSONObject object) throws JSONException
+    {
+        Word word = new Word();
+        word.setContent(object.getString(Constant.PARA_CONTENT));
+        //word.setCategoryId(object.getInt("category_id"));
+        word.setRightAnswer(object.getString(Constant.PARA_RIGHT_ANSWER));
+        return word;
 
     }
 
-    private ArrayList<Word> getList() throws JSONException {
+    private ArrayList<Word> getList()  {
         ArrayList<Word> result = new ArrayList<>();
-        JSONArray jsonArray = jsonObject.getJSONArray("words");// thay list = tag name cua list trong api nhe
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject object = jsonArray.getJSONObject(i);
+        try {
+            JSONArray jsonArray = jsonObject.getJSONArray(Constant.PARA_WORDS);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                Word word = getWord(object);
+                result.add(word);
 
-            //tiep theo lay cac du lieu trong object chuyen vao result nhe
+                //word.setCategoryId(object.getString(""));
+                //tiep theo lay cac du lieu trong object chuyen vao result nhe
+            }
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
         }
         return result;
+    }
+    private void doSomeThingWithListWord(ArrayList<Word>listWord)
+    {
+        //code de thao tac voi list word
     }
 
     @Override

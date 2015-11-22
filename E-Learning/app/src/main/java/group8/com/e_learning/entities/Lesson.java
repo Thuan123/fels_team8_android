@@ -13,17 +13,20 @@ public class Lesson {
     private int categoryId;
     private int result;
     private String createdAt;
+    private String updatedAt;
 
     public Lesson() {
         id = userId = categoryId = result = 0;
         createdAt = "";
+        updatedAt = "";
     }
 
-    public Lesson(int categoryId, String createdAt, int id, int result, int userId) {
+    public Lesson(int categoryId, String createdAt, int id, int result, String updatedAt, int userId) {
         this.categoryId = categoryId;
         this.createdAt = createdAt;
         this.id = id;
         this.result = result;
+        this.updatedAt = updatedAt;
         this.userId = userId;
 
     }
@@ -60,6 +63,13 @@ public class Lesson {
         this.result = result;
     }
 
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public int getUserId() {
         return userId;
