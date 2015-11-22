@@ -57,16 +57,14 @@
             android:id="@+id/sp_level"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:popupBackground="#EEEEEE" />
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/sp_status"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:popupBackground="#EEEEEE" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
@@ -88,6 +86,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
 
 </LinearLayout>

@@ -4,63 +4,49 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
-public class Category_activity extends Activity {
+import java.util.ArrayList;
 
-    public static final String KEY_TITLE = "key_title";
+import group8.com.e_learning.common.Constant;
+import group8.com.e_learning.entities.Category;
+import group8.com.e_learning.entities.Word;
 
+public class Category_activity extends Activity implements View.OnClickListener{
+    ArrayList<Category> listCategory = new ArrayList<Category>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
-        //    Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-        //  setSupportActionBar(myToolbar);
+        initList();
+        setRecycleView();
+    }
+    private void initList(){
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
+        listCategory.add(new Category());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category_activity, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.button_next) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void setRecycleView() {
+        RecyclerView rvCategory = (RecyclerView) findViewById(R.id.rv_category);
+        ItemCategoryAdapter adapter = new ItemCategoryAdapter(ItemCategory.createItemCategory(listCategory));
+        rvCategory.setAdapter(adapter);
+        rvCategory.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void onClick(View view) {
-
         switch (view.getId()) {
-            case R.id.layout_basic:
-                Intent intentBasic = new Intent(this, Lesson_Activity.class);
-                intentBasic.putExtra(KEY_TITLE, "Basic Lesson");
-                startActivity(intentBasic);
-                break;
-            case R.id.layout_advance:
-                Intent intentAdvance = new Intent(this, Lesson_Activity.class);
-                intentAdvance.putExtra(KEY_TITLE, "Advance Lesson");
-                startActivity(intentAdvance);
-                break;
-            case R.id.layout_expert:
-                Intent intentExpert = new Intent(this, Lesson_Activity.class);
-                intentExpert.putExtra(KEY_TITLE, "Expert Lesson");
-                startActivity(intentExpert);
-                break;
             case R.id.button_back:
                 finish();
                 break;
