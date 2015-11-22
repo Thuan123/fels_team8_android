@@ -8,24 +8,42 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import group8.com.e_learning.R;
+import group8.com.e_learning.common.Constant;
+import group8.com.e_learning.entities.Word;
+import group8.com.e_learning.entities.WordAnswer;
+import group8.com.e_learning.network.EConnect;
 
 /**
  * Created by tranngoclinh on 11/19/15.
  */
-public class Lesson_Activity extends Activity implements View.OnClickListener {
+public class Lesson_Activity extends Activity implements View.OnClickListener, EConnect.OnConnected {
     private TextView tvTitle;
+    private JSONObject jsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
+        initTitle();
+        connectNetwork();
     }
 
+    private void initTitle() {
+        tvTitle = (TextView) findViewById(R.id.tv_title_lesson);
+        Intent intent = getIntent();
+        String str = intent.getStringExtra(Category_activity.KEY_TITLE);
+        tvTitle.setText(str);
+    }
 
     private void doneLesson() {
         Toast.makeText(this, "Lesson done", Toast.LENGTH_SHORT).show();
-        finish();
     }
 
     @Override
@@ -63,5 +81,75 @@ public class Lesson_Activity extends Activity implements View.OnClickListener {
 
     private void playSound() {
         Toast.makeText(this, "Play sound", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getJson(JSONObject JsonObject) {
+        
+        this.jsonObject = JsonObject;
+        handlerJsonObject();
+    }
+
+    private void handlerJsonObject() {
+        try {
+            JSONArray array = this.jsonObject.getJSONArray(Constant.PARA_WORDS);
+            handlerListWord(getListWord(array));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private ArrayList<Word> getListWord(JSONArray array) {
+
+        ArrayList<Word> result = new ArrayList<>();
+        try {
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject object = array.getJSONObject(i);
+                Word word = new Word();
+                word.setContent(object.getString(Constant.PARA_CONTENT));
+                word.setWordAnswer(getAnswer(object.getJSONArray(Constant.PARA_ANSWER)));
+                result.add(word);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private WordAnswer[] getAnswer(JSONArray arrayAnswer ) throws JSONException{
+        WordAnswer[] result = new WordAnswer[4];
+        for(int i=0;i<4;i++)
+        {
+            JSONObject object = arrayAnswer.getJSONObject(i);
+            WordAnswer answer = new WordAnswer();
+            answer.setContent(object.getString(Constant.PARA_CONTENT));
+            answer.setCorrect(object.getInt(Constant.PARA_CORRECT));
+            result[i] = answer;
+        }
+        return result;
+    }
+
+    private String makeAPI()
+    {
+
+        int category_id = getIntent().getIntExtra(Constant.PARA_CATEGORY_ID,0);
+
+        return String.format(Constant.API_LESSON,category_id);
+    }
+
+    private void  connectNetwork()
+    {
+        EConnect eConnect = new EConnect(this);
+        eConnect.execute(makeAPI());
+    }
+
+    private void handlerListWord(ArrayList<Word> listWord) {
+        //do something wih list word
     }
 }
