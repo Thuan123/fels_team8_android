@@ -4,108 +4,74 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.entities.Category;
 import group8.com.e_learning.network.EConnect;
 
-public class Category_activity extends Activity implements EConnect.OnConnected{
+public class Category_activity extends Activity implements EConnect.OnConnected, View.OnClickListener {
 
-    public static final String KEY_TITLE = "key_title";
     private JSONObject jsonObject;
-
+    private ArrayList<Category> listCategory = new ArrayList<Category>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
         connectNetwork();
-
+        listCategory.add(new Category("1/1/1",1,"1/1/","1"));
+        initRecycleCategory();
     }
 
-    private void connectNetwork()
-    {
+    private void initRecycleCategory() {
+        RecyclerView rvCategory = (RecyclerView) findViewById(R.id.rv_category);
+        ItemCategoryAdapter adapter = new ItemCategoryAdapter(ItemCategory.createItemCategory(listCategory));
+        adapter.setOnItemClickListener(new ItemCategoryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(Category_activity.this, " was clicked!" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Category_activity.this, Lesson_Activity.class);
+                startActivity(intent);
+            }
+        });
+        rvCategory.setAdapter(adapter);
+        rvCategory.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void connectNetwork() {
         EConnect eConnect = new EConnect(this);
         eConnect.execute(Constant.API_CATEGORY);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category_activity, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.button_next) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void onClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.layout_basic:
-                Intent intentBasic = new Intent(this, Lesson_Activity.class);
-                intentBasic.putExtra(KEY_TITLE, "Basic Lesson");
-                startActivity(intentBasic);
-                break;
-            case R.id.layout_advance:
-                Intent intentAdvance = new Intent(this, Lesson_Activity.class);
-                intentAdvance.putExtra(KEY_TITLE, "Advance Lesson");
-                startActivity(intentAdvance);
-                break;
-            case R.id.layout_expert:
-                Intent intentExpert = new Intent(this, Lesson_Activity.class);
-                intentExpert.putExtra(KEY_TITLE, "Expert Lesson");
-                startActivity(intentExpert);
-                break;
-            case R.id.button_back:
-                finish();
-                break;
-        }
-    }
-
-
-
-    private void doAfterfetchData()
-    {
-        try{
+    private void doAfterfetchData() {
+        try {
             JSONArray array = this.jsonObject.getJSONArray(Constant.PARA_WORDS);
             ArrayList<Category> listcategoryList = getCategoryList(array);
             doSomeThingWithList(listcategoryList);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-
-    private ArrayList<Category> getCategoryList(JSONArray array) throws JSONException{
+    private ArrayList<Category> getCategoryList(JSONArray array) throws JSONException {
         ArrayList<Category> result = new ArrayList<>();
-        for (int i=0;i<array.length();i++)
-        {
+        for (int i = 0; i < array.length(); i++) {
             JSONObject object = array.getJSONObject(i);
             Category category = new Category();
             category.setId(object.getInt(Constant.PARA_ID));
@@ -118,12 +84,25 @@ public class Category_activity extends Activity implements EConnect.OnConnected{
     @Override
     public void getJson(JSONObject JsonObject) {
         this.jsonObject = JsonObject;
+        Log.d("abcde", JsonObject.toString());
         doAfterfetchData();
     }
 
 
     private void doSomeThingWithList(ArrayList<Category> listcategoryList) {
         //code vao day de lam viec voi llist category nhe.
+        for (int i = 0; i < listcategoryList.size(); i++) {
+            //  Log.i("Category_activity", listcategoryList.get(i).getName());
+            // Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
+        }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_back:
+                finish();
+                break;
+        }
+    }
 }

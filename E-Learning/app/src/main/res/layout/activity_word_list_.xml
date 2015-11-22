@@ -54,19 +54,17 @@
         android:padding="5dp">
 
         <Spinner
-            android:id="@+id/sp_level"
+            android:id="@+id/sp_category"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:popupBackground="#EEEEEE" />
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/sp_status"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:popupBackground="#EEEEEE" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView

@@ -175,8 +175,8 @@ public class Login_Activity extends Activity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                //Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
-                //startActivity(intent);
+//                Intent intent = new Intent(Login_Activity.this, Profile_Activity.class);
+//                startActivity(intent);
                 if (checkLogin())
                     login();
                 else tvNoti.setVisibility(View.VISIBLE);
