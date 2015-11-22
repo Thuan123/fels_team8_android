@@ -11,11 +11,11 @@ public class Constant {
 
 
 
-    public static final String API_WORD_ONLINE = "https://frteam8.herokuapp.com/words.json";
-    public static final String API_LOGIN = "https://frteam8.herokuapp.com/login.json";
-    public static final String API_SIGNUP = "https://frteam8.herokuapp.com/signup.json";
-    public static final String API_CATEGORY = "https://frteam8.herokuapp.com/categories.json";
-    public static final String API_EDIT_PROFILE = "https://frteam8.herokuapp.com/user/:id.json";
+    public static final String API_WORD_ONLINE = "http://teammmmm8.herokuapp.com/words.json";
+    public static final String API_LOGIN = "http://teammmmm8.herokuapp.com/login.json";
+    public static final String API_SIGNUP = "http://teammmmm8.herokuapp.com/signup.json";
+    public static final String API_CATEGORY = "http://teammmmm8.herokuapp.com/categories.json";
+    public static final String API_EDIT_PROFILE = "http://teammmmm8.herokuapp.com/user/:id.json";
 
 
     public static final String LOGIN_SESSION = "session";
@@ -41,7 +41,7 @@ public class Constant {
     public static final String PARA_TYPE="type";
     public static final String PARA_ANSWER ="answer" ;
     public static final String PARA_CORRECT = "PARA_CORRECT";
-    public static final String API_LESSON = "https://frteam8.herokuapp.com/categories/%d/lessons.json";
+    public static final String API_LESSON = "http://teammmmm8.herokuapp.com/categories/%d/lessons.json";
     public static final String PARA_USER = "user";
 
 
