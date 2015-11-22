@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class WordList_Activity extends Activity
     private JSONObject jsonObject;
     private Spinner spLevel, spStatus;
     private ArrayList<Word> listWord = new ArrayList<Word>();
-
+    private String[] state = {"Cupcake", "Donut", "Eclair", "Froyo",
+            "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellybean",
+            "kitkat"};
     private RecyclerView rvWord;
 
     @Override
@@ -107,8 +110,8 @@ public class WordList_Activity extends Activity
         spLevel.setOnItemSelectedListener(this);
 
         spStatus = (Spinner) findViewById(R.id.sp_status);
-        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.status_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.checked_text_view);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, state);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(adapter1);
         spStatus.setOnItemSelectedListener(this);
     }
@@ -153,8 +156,7 @@ public class WordList_Activity extends Activity
         }
     }
 
-    private void hanglerJsonObject()
-    {
+    private void hanglerJsonObject() {
         /*try {
             jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
@@ -165,13 +167,13 @@ public class WordList_Activity extends Activity
         }*/
         EConnect eConnect = new EConnect(this);
         eConnect.execute(Constant.API_WORD_ONLINE);
-        
+
     }
 
     @Override
     public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
-       
+
     }
 
     private ArrayList<Word> getList() throws JSONException {
