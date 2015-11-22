@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.entities.Word;
@@ -27,117 +28,43 @@ import group8.com.e_learning.network.EConnect;
 public class WordList_Activity extends Activity
         implements AdapterView.OnItemSelectedListener, EConnect.OnConnected {
     private JSONObject jsonObject;
-    private Spinner spLevel, spStatus;
+    private Spinner spCategory, spStatus;
     private ArrayList<Word> listWord = new ArrayList<Word>();
-
+    private String[] arrStatus = {"All", "Learned", "Not learned"};
+    private List<String> arrCategory = new ArrayList<String>();
     private RecyclerView rvWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
-        //   Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionBar);
-        // setSupportActionBar(myToolbar);
-
-        initWordExample();
-        connectNetWork(0, null);//
+        connectNetWork(0, null);
         Log.d("API", makeAPI(0, "not learner"));
         initSpiner();
         initRecycleWord();
-    }
 
-    private void initWordExample() {
-        String rightAnswer = "no rightAnswer";
-        WordAnswer[] answer = new WordAnswer[4];
-        answer[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", 0, answer, rightAnswer));
-
-        WordAnswer[] answer1 = new WordAnswer[4];
-        answer1[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer1[1] = new WordAnswer("choi", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer1[2] = new WordAnswer("cho meo", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer1[3] = new WordAnswer("chim lon", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Play", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer1, rightAnswer));
-
-        WordAnswer[] answer2 = new WordAnswer[4];
-        answer2[0] = new WordAnswer("dang yeu", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer2[1] = new WordAnswer("tot bung", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer2[2] = new WordAnswer("con cho", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer2[3] = new WordAnswer("con meo", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_EXPERT, "Pic", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer2, rightAnswer));
-
-        WordAnswer[] answer3 = new WordAnswer[4];
-        answer3[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer3[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer3[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer3[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer3, rightAnswer));
-
-        WordAnswer[] answer4 = new WordAnswer[4];
-        answer4[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer4[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer4[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer4[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_ADVANCE, "Go", "10/22/1023", 12, "13/31/2001", Constant.LEARNED, answer4, rightAnswer));
-
-        WordAnswer[] answer5 = new WordAnswer[4];
-        answer5[0] = new WordAnswer("di", 1, "20/11/2015", 12, "21/11/2032", 12);
-        answer5[1] = new WordAnswer("di choi", 1, "20/1/2015", 12, "21/11/2032", 12);
-        answer5[2] = new WordAnswer("di hoc", 1, "20/1/2005", 12, "21/11/2032", 12);
-        answer5[3] = new WordAnswer("di ngu", 1, "2/11/2015", 12, "21/11/2032", 12);
-        listWord.add(new Word(Constant.CATEGORY_BASIC, "Go", "10/22/1023", 12, "13/31/2001", Constant.NOT_LEARNED, answer5, rightAnswer));
     }
 
     private void initRecycleWord() {
         rvWord = (RecyclerView) findViewById(R.id.rv_words);
-        // Create adapter passing in the sample user data
         ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
-        // Attach the adapter to the recyclerview to populate items
         rvWord.setAdapter(adapter);
-        // Set layout manager to position the items
         rvWord.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initSpiner() {
-        spLevel = (Spinner) findViewById(R.id.sp_level);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.level_array, R.layout.spinner_item);
+        spCategory = (Spinner) findViewById(R.id.sp_category);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, arrCategory);
         adapter.setDropDownViewResource(R.layout.checked_text_view);
-        spLevel.setAdapter(adapter);
-        spLevel.setOnItemSelectedListener(this);
+        spCategory.setAdapter(adapter);
+        spCategory.setOnItemSelectedListener(this);
 
         spStatus = (Spinner) findViewById(R.id.sp_status);
-        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(this, R.array.status_array, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.checked_text_view);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, R.layout.spinner_item, arrStatus);
+        adapter1.setDropDownViewResource(R.layout.checked_text_view);
         spStatus.setAdapter(adapter1);
         spStatus.setOnItemSelectedListener(this);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_word_list_, menu);
-        return true;
-    }
-
-  /*  @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.button_next) {
-            ;
-            Intent intent = new Intent(this, Category_activity.class);
-            startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
-    } */
 
 
     private void tapPDF() {
@@ -155,8 +82,7 @@ public class WordList_Activity extends Activity
         }
     }
 
-    private void connectNetWork(int category_id, String type)
-    {
+    private void connectNetWork(int category_id, String type) {
         /*try {
             jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
@@ -173,12 +99,14 @@ public class WordList_Activity extends Activity
 
     private String makeAPI(Integer categoty_id, String type) {
 
-        if(categoty_id == 0 && type == null) return Constant.API_WORD_ONLINE;
-        if(categoty_id == 0) return Constant.API_WORD_ONLINE + '?' + Constant.PARA_TYPE + '=' + type;
-        if(type == null) return Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString() ;
+        if (categoty_id == 0 && type == null) return Constant.API_WORD_ONLINE;
+        if (categoty_id == 0)
+            return Constant.API_WORD_ONLINE + '?' + Constant.PARA_TYPE + '=' + type;
+        if (type == null)
+            return Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString();
 
-        return  Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString()  + '&'
-                        + Constant.PARA_TYPE + '=' + type;
+        return Constant.API_WORD_ONLINE + '?' + Constant.PARA_CATEGORY_ID + '=' + categoty_id.toString() + '&'
+                + Constant.PARA_TYPE + '=' + type;
     }
 
     @Override
@@ -187,8 +115,7 @@ public class WordList_Activity extends Activity
         doSomeThingWithListWord(getList());
     }
 
-    private Word getWord(JSONObject object) throws JSONException
-    {
+    private Word getWord(JSONObject object) throws JSONException {
         Word word = new Word();
         word.setContent(object.getString(Constant.PARA_CONTENT));
         //word.setCategoryId(object.getInt("category_id"));
@@ -197,7 +124,7 @@ public class WordList_Activity extends Activity
 
     }
 
-    private ArrayList<Word> getList()  {
+    private ArrayList<Word> getList() {
         ArrayList<Word> result = new ArrayList<>();
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(Constant.PARA_WORDS);
@@ -209,16 +136,13 @@ public class WordList_Activity extends Activity
                 //word.setCategoryId(object.getString(""));
                 //tiep theo lay cac du lieu trong object chuyen vao result nhe
             }
-        }
-        catch(JSONException e)
-        {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return result;
     }
-    private void doSomeThingWithListWord(ArrayList<Word>listWord)
-    {
-        //code de thao tac voi list word
+
+    private void doSomeThingWithListWord(ArrayList<Word> listWord) {
     }
 
     @Override
@@ -227,8 +151,8 @@ public class WordList_Activity extends Activity
         int indexLevel = 0;
         int indexStatus = 0;
         switch (spinner.getId()) {
-            case R.id.sp_level:
-                indexLevel = spLevel.getSelectedItemPosition();
+            case R.id.sp_category:
+                indexLevel = spCategory.getSelectedItemPosition();
             case R.id.sp_status:
                 indexStatus = spStatus.getSelectedItemPosition();
                 Toast.makeText(this, indexLevel + "-" + indexStatus, Toast.LENGTH_SHORT).show();
@@ -239,111 +163,11 @@ public class WordList_Activity extends Activity
     }
 
     private void fillter(int indexLevel, int indexStatus) {
-        ArrayList<Word> list = new ArrayList<Word>();
-        if (indexLevel == 0 && indexStatus == 0) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                list.add(word);
-            }
-        }
-        if (indexLevel == 0 && indexStatus == 1) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getStatus() == Constant.LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 0 && indexStatus == 2) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getStatus() == Constant.NOT_LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-
-        if (indexLevel == 1 && indexStatus == 0) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_BASIC) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 1 && indexStatus == 1) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_BASIC && word.getStatus() == Constant.LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 1 && indexStatus == 2) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_BASIC && word.getStatus() == Constant.NOT_LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-
-        if (indexLevel == 2 && indexStatus == 0) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_ADVANCE) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 2 && indexStatus == 1) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_ADVANCE && word.getStatus() == Constant.LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 2 && indexStatus == 2) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_ADVANCE && word.getStatus() == Constant.NOT_LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-
-        if (indexLevel == 3 && indexStatus == 0) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_EXPERT) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 3 && indexStatus == 1) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_EXPERT && word.getStatus() == Constant.LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-        if (indexLevel == 3 && indexStatus == 2) {
-            for (int i = 0; i < listWord.size(); i++) {
-                Word word = listWord.get(i);
-                if (word.getCategoryId() == Constant.CATEGORY_EXPERT && word.getStatus() == Constant.NOT_LEARNED) {
-                    list.add(word);
-                }
-            }
-        }
-
-        ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(list));
+        ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
         // Attach the adapter to the recyclerview to populate items
         rvWord.setAdapter(adapter);
         // Set layout manager to position the items
         rvWord.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
 

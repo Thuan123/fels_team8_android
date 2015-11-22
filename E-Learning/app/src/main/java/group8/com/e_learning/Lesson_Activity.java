@@ -31,16 +31,9 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
-        initTitle();
         connectNetwork();
     }
 
-    private void initTitle() {
-        tvTitle = (TextView) findViewById(R.id.tv_title_lesson);
-        Intent intent = getIntent();
-        String str = intent.getStringExtra(Category_activity.KEY_TITLE);
-        tvTitle.setText(str);
-    }
 
     private void doneLesson() {
         Toast.makeText(this, "Lesson done", Toast.LENGTH_SHORT).show();
