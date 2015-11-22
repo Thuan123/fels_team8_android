@@ -24,6 +24,7 @@ public class Category_activity extends Activity implements EConnect.OnConnected{
     public static final String KEY_TITLE = "key_title";
     private JSONObject jsonObject;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
