@@ -92,8 +92,8 @@ public class Category_activity extends Activity implements EConnect.OnConnected,
     private void doSomeThingWithList(ArrayList<Category> listcategoryList) {
         //code vao day de lam viec voi llist category nhe.
         for (int i = 0; i < listcategoryList.size(); i++) {
-            //  Log.i("Category_activity", listcategoryList.get(i).getName());
-            // Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
+             // Log.d("Category_activity", listcategoryList.get(i).getName());
+              //Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
         }
     }
 
