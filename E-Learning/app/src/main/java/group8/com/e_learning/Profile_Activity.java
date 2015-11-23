@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import group8.com.e_learning.common.Constant;
 import group8.com.e_learning.entities.Lesson;
 
 /**
@@ -63,7 +64,13 @@ public class Profile_Activity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_edit:
                 Intent intentEdit = new Intent(Profile_Activity.this, UpdateProfile_Activity.class);
+                intentEdit.putExtra("email", email.getText().toString());
                 startActivity(intentEdit);
+                if (Constant.updateDone)
+                {
+                    Constant.updateDone = false;
+                    this.finish();
+                }
                 break;
             case R.id.btn_words:
                 Intent intentWords = new Intent(Profile_Activity.this, WordList_Activity.class);

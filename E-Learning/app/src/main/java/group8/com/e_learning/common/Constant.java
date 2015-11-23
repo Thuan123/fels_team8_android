@@ -43,6 +43,7 @@ public class Constant {
     public static final String PARA_CORRECT = "PARA_CORRECT";
     public static final String API_LESSON = "http://teammmmm8.herokuapp.com/categories/%d/lessons.json";
     public static final String PARA_USER = "user";
+    public static final String API_LOGOUT = "http://teammmmm8.herokuapp.com/logout.json";
 
 
     public static boolean registerDone = false;
@@ -62,4 +63,5 @@ public class Constant {
     public static final String API_WORD_OFFLINE = "{\"words\":[{\"id\":1,\"content\":\"test1\",\"category_id\":1,\"created_at\":\"2015-11-16T16:33:46.651Z\",\"updated_at\":\"2015-11-16T16:33:46.651Z\"},{\"id\":2,\"content\":\"test2\",\"category_id\":1,\"created_at\":\"2015-11-16T16:33:47.655Z\",\"updated_at\":\"2015-11-16T16:33:47.655Z\"},{\"id\":3,\"content\":\"test3\",\"category_id\":2,\"created_at\":\"2015-11-16T16:33:48.584Z\",\"updated_at\":\"2015-11-16T16:33:48.584Z\"},{\"id\":4,\"content\":\"test4\",\"category_id\":2,\"created_at\":\"2015-11-16T16:33:49.255Z\",\"updated_at\":\"2015-11-16T16:33:49.255Z\"}]}";
 
 
+    public static boolean updateDone = false;
 }
