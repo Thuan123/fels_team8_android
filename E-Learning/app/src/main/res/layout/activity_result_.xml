@@ -9,7 +9,7 @@
         android:id="@+id/toolbar_actionBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#009688"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -17,7 +17,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="80dp"
@@ -38,8 +40,11 @@
                 android:id="@+id/btn_ok"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_login_custom"
                 android:onClick="onClick"
-                android:text="OK" />
+                android:text="OK"
+                android:textColor="#009688" />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -59,7 +64,7 @@
         android:gravity="center"
         android:text="17/200"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#43a047" />
+        android:textColor="#009688" />
 
     <LinearLayout
         android:layout_width="match_parent"

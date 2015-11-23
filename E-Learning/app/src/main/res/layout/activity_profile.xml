@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_actionBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#009688"
         android:elevation="4dp"
 
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -48,6 +48,7 @@
             android:paddingLeft="5dp">
 
             <TextView
+                android:id="@+id/text_name"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
@@ -55,10 +56,10 @@
                 android:gravity="center_vertical"
                 android:text="\tNguyen Van A"
                 android:textColor="@android:color/black"
-                android:id="@+id/text_name"
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/text_email"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
@@ -67,7 +68,6 @@
                 android:singleLine="true"
                 android:text="\tnguyenvana@gmail.com"
                 android:textColor="@android:color/black"
-                android:id="@+id/text_email"
                 android:textSize="12sp" />
 
             <TextView
@@ -82,13 +82,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_edit_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:background="@android:color/darker_gray">
+            android:background="@drawable/btn_edit_custom">
 
             <Button
                 android:id="@+id/btn_edit"
@@ -105,7 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:width="1dp"
-        android:background="@android:color/black" />
+        android:background="#009688" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -137,9 +138,11 @@
                 android:layout_width="1dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_profile_custom"
                 android:gravity="center"
                 android:onClick="onClick"
                 android:text="Words"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <Button
@@ -148,9 +151,11 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_profile_custom"
                 android:gravity="center"
                 android:onClick="onClick"
                 android:text="Lesson"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
         </LinearLayout>

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/white"
+    android:background="#009688"
     android:scrollbarThumbVertical="@android:color/transparent">
 
     <RelativeLayout
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Login"
-                android:textColor="@android:color/black"
+                android:textColor="#FFFFFF"
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
@@ -40,9 +40,10 @@
                     android:id="@+id/btn_login"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/btn_login_custom"
                     android:onClick="onClick"
                     android:text="Login"
-                    android:textColor="@android:color/white" />
+                    android:textColor="#009688" />
 
             </LinearLayout>
 
@@ -61,10 +62,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:drawableLeft="@drawable/ic_mail_white_24dp"
                     android:gravity="center_vertical"
                     android:text="\tEmail"
-                    android:textColor="#039BE5"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -88,10 +89,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                    android:drawableLeft="@drawable/ic_lock_white_24dp"
                     android:gravity="center_vertical"
                     android:text="\tPassword"
-                    android:textColor="#039BE5"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -117,7 +118,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="*Username or password is incorrect"
-                    android:textColor="@android:color/holo_red_dark"
+                    android:textColor="#FCE4EC"
                     android:textSize="12sp"
                     android:visibility="invisible" />
 
@@ -136,8 +137,7 @@
             android:linksClickable="true"
             android:onClick="onClick"
             android:text="Create new account"
-            android:textColor="#1565C0"
-            android:textColorLink="#FFFFFF"
+            android:textColor="#FFFFFF"
             android:textSize="16dp"
             android:textStyle="bold" />
     </RelativeLayout>
