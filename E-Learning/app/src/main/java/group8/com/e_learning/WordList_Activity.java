@@ -29,7 +29,6 @@ public class WordList_Activity extends Activity
         implements AdapterView.OnItemSelectedListener, EConnect.OnConnected {
     private JSONObject jsonObject;
     private Spinner spCategory, spStatus;
-    private ArrayList<Word> listWord = new ArrayList<Word>();
     private String[] arrStatus = {"All", "Learned", "Not learned"};
     private List<String> arrCategory = new ArrayList<String>();
     private RecyclerView rvWord;
@@ -37,15 +36,13 @@ public class WordList_Activity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("Wordlist", "onCreate1");
         setContentView(R.layout.activity_word_list_);
         connectNetWork(0, null);
-        Log.d("API", makeAPI(0, "not learner"));
-        initSpiner();
-        initRecycleWord();
-
     }
 
-    private void initRecycleWord() {
+    private void initRecycleWord(ArrayList<Word> listWord) {
+        Log.d("Wordlist", "initRecycleWord2");
         rvWord = (RecyclerView) findViewById(R.id.rv_words);
         ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
         rvWord.setAdapter(adapter);
@@ -53,6 +50,7 @@ public class WordList_Activity extends Activity
     }
 
     private void initSpiner() {
+        Log.d("Wordlist", "initSpinner3");
         spCategory = (Spinner) findViewById(R.id.sp_category);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, arrCategory);
         adapter.setDropDownViewResource(R.layout.checked_text_view);
@@ -72,6 +70,7 @@ public class WordList_Activity extends Activity
     }
 
     public void onClick(View view) {
+        Log.d("Wordlist", "onClick4");
         switch (view.getId()) {
             case R.id.button_back:
                 finish();
@@ -83,6 +82,7 @@ public class WordList_Activity extends Activity
     }
 
     private void connectNetWork(int category_id, String type) {
+        Log.d("Wordlist", "connectNetWork5");
         /*try {
             jsonObject = new JSONObject(Constant.API_WORD_OFFLINE);
             //code vao day, cac thao tac nhu  getlist...
@@ -92,13 +92,11 @@ public class WordList_Activity extends Activity
             e.printStackTrace();
         }*/
         EConnect eConnect = new EConnect(this);
-
         eConnect.execute(makeAPI(category_id, type));
-
     }
 
     private String makeAPI(Integer categoty_id, String type) {
-
+        Log.d("Wordlist", "makeAPI6");
         if (categoty_id == 0 && type == null) return Constant.API_WORD_ONLINE;
         if (categoty_id == 0)
             return Constant.API_WORD_ONLINE + '?' + Constant.PARA_TYPE + '=' + type;
@@ -111,11 +109,13 @@ public class WordList_Activity extends Activity
 
     @Override
     public void getJson(JSONObject jsonObject) {
+        Log.d("Wordlist", "getJson7");
         this.jsonObject = jsonObject;
         doSomeThingWithListWord(getList());
     }
 
     private Word getWord(JSONObject object) throws JSONException {
+        Log.d("Wordlist", "getWord8");
         Word word = new Word();
         word.setContent(object.getString(Constant.PARA_CONTENT));
         //word.setCategoryId(object.getInt("category_id"));
@@ -125,14 +125,15 @@ public class WordList_Activity extends Activity
     }
 
     private ArrayList<Word> getList() {
+        Log.d("Wordlist", "getList9");
         ArrayList<Word> result = new ArrayList<>();
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(Constant.PARA_WORDS);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
+                Log.d("json", object.toString());
                 Word word = getWord(object);
                 result.add(word);
-
                 //word.setCategoryId(object.getString(""));
                 //tiep theo lay cac du lieu trong object chuyen vao result nhe
             }
@@ -143,10 +144,14 @@ public class WordList_Activity extends Activity
     }
 
     private void doSomeThingWithListWord(ArrayList<Word> listWord) {
+        Log.d("Wordlist", "doSomeThing10");
+        initSpiner();
+        initRecycleWord(listWord);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Log.d("Wordlist", "OnItemSelectied11");
         Spinner spinner = (Spinner) parent;
         int indexLevel = 0;
         int indexStatus = 0;
@@ -156,23 +161,12 @@ public class WordList_Activity extends Activity
             case R.id.sp_status:
                 indexStatus = spStatus.getSelectedItemPosition();
                 Toast.makeText(this, indexLevel + "-" + indexStatus, Toast.LENGTH_SHORT).show();
-                fillter(indexLevel, indexStatus);
                 break;
         }
-
     }
-
-    private void fillter(int indexLevel, int indexStatus) {
-        ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
-        // Attach the adapter to the recyclerview to populate items
-        rvWord.setAdapter(adapter);
-        // Set layout manager to position the items
-        rvWord.setLayoutManager(new LinearLayoutManager(this));
-    }
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        Log.d("Wordlist", "onNothingSelected13");
     }
 }
