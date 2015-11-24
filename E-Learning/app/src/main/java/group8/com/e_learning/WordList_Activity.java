@@ -20,16 +20,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group8.com.e_learning.common.Constant;
+import group8.com.e_learning.entities.Category;
 import group8.com.e_learning.entities.Word;
 import group8.com.e_learning.entities.WordAnswer;
 import group8.com.e_learning.network.EConnect;
+import group8.com.e_learning.network.GetCategory;
 
 
 public class WordList_Activity extends Activity
-        implements AdapterView.OnItemSelectedListener, EConnect.OnConnected {
-    private JSONObject jsonObject;
+        implements AdapterView.OnItemSelectedListener, EConnect.OnConnected, GetCategory.OnConnected {
+    private JSONObject jsonObject, categoryObject;
     private Spinner spCategory, spStatus;
-    private ArrayList<Word> listWord = new ArrayList<Word>();
     private String[] arrStatus = {"All", "Learned", "Not learned"};
     private List<String> arrCategory = new ArrayList<String>();
     private RecyclerView rvWord;
@@ -39,20 +40,16 @@ public class WordList_Activity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_list_);
         connectNetWork(0, null);
-        Log.d("API", makeAPI(0, "not learner"));
-        initSpiner();
-        initRecycleWord();
-
     }
 
-    private void initRecycleWord() {
+    private void initRecycleWord(ArrayList<Word> listWord) {
         rvWord = (RecyclerView) findViewById(R.id.rv_words);
         ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
         rvWord.setAdapter(adapter);
         rvWord.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void initSpiner() {
+    private void initSpiner(List<String> arrCategory) {
         spCategory = (Spinner) findViewById(R.id.sp_category);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, arrCategory);
         adapter.setDropDownViewResource(R.layout.checked_text_view);
@@ -91,8 +88,9 @@ public class WordList_Activity extends Activity
         {
             e.printStackTrace();
         }*/
+        GetCategory getCategory = new GetCategory(this);
+        getCategory.execute(Constant.API_CATEGORY);
         EConnect eConnect = new EConnect(this);
-
         eConnect.execute(makeAPI(category_id, type));
 
     }
@@ -144,7 +142,9 @@ public class WordList_Activity extends Activity
 
     private void doSomeThingWithListWord(ArrayList<Word> listWord) {
         Log.d("Wordlist", "doSomeThing10");
-        initSpiner();
+        for (int i = 0; i < listWord.size(); i++) {
+            Log.d("listWord-------", listWord.get(i).getContent());
+        }
         initRecycleWord(listWord);
     }
 
@@ -159,28 +159,20 @@ public class WordList_Activity extends Activity
             case R.id.sp_status:
                 indexStatus = spStatus.getSelectedItemPosition();
                 Toast.makeText(this, indexLevel + "-" + indexStatus, Toast.LENGTH_SHORT).show();
-                fillter(indexLevel, indexStatus);
                 break;
         }
 
     }
 
-    private void fillter(int indexLevel, int indexStatus) {
-        ItemWordAdapter adapter = new ItemWordAdapter(ItemWord.createItemWord(listWord));
-        // Attach the adapter to the recyclerview to populate items
-        rvWord.setAdapter(adapter);
-        // Set layout manager to position the items
-        rvWord.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         Log.d("Wordlist", "onNothingSelected13");
     }
+
     @Override
     public void getCategoryObject(JSONObject jsonObject) {
         categoryObject = jsonObject;
+        Log.d("CategoryOject11111", jsonObject.toString());
         doAfterfetchData();
     }
 
@@ -208,9 +200,12 @@ public class WordList_Activity extends Activity
 
     private void doSomeThingWithCategoryList(ArrayList<Category> listcategoryList) {
         //code vao day de lam viec voi llist category nhe.
+        ArrayList<String> arrNameCategory = new ArrayList<String>();
         for (int i = 0; i < listcategoryList.size(); i++) {
             Log.d("Category_activity", listcategoryList.get(i).getName());
+            arrNameCategory.add(listcategoryList.get(i).getName());
             //Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
         }
+        initSpiner(arrNameCategory);
     }
 }

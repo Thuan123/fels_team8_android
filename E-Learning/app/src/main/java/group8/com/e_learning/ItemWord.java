@@ -6,6 +6,8 @@ import java.util.List;
 import group8.com.e_learning.entities.Word;
 import group8.com.e_learning.entities.WordAnswer;
 
+import android.util.Log;
+
 /**
  * Created by tranngoclinh on 11/20/15.
  */
