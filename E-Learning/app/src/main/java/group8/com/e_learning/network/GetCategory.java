@@ -18,10 +18,10 @@ import group8.com.e_learning.common.Constant;
 /**
  * Created by nomore on 14/11/2015.
  */
-public class EConnect extends AsyncTask<String, String, JSONObject>{
+public class GetCategory extends AsyncTask<String, String, JSONObject>{
     private OnConnected mOnConnected;
 
-    public EConnect(OnConnected mOnConnected) {
+    public GetCategory(OnConnected mOnConnected) {
         this.mOnConnected = mOnConnected;
     }
 
@@ -60,9 +60,9 @@ public class EConnect extends AsyncTask<String, String, JSONObject>{
     @Override
     protected void onPostExecute(JSONObject result) {
         super.onPostExecute(result);
-      //  Log.d("no tag",result.toString());
+        //  Log.d("no tag",result.toString());
         if (mOnConnected != null) {
-            mOnConnected.getJson(result);
+            mOnConnected.getCategoryObject(result);
         }
 
     }
@@ -74,6 +74,6 @@ public class EConnect extends AsyncTask<String, String, JSONObject>{
 //    }
 
     public interface OnConnected {
-        public void getJson(JSONObject jsonObject);
+        public void getCategoryObject(JSONObject jsonObject);
     }
 }
