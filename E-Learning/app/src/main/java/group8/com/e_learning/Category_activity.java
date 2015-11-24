@@ -26,6 +26,7 @@ import group8.com.e_learning.network.EConnect;
 
 public class Category_activity extends Activity implements EConnect.OnConnected, View.OnClickListener {
 
+    public static final String CATEGORY_NAME = "category_name";
     private JSONObject jsonObject;
     private ArrayList<Category> listCategory = new ArrayList<Category>();
 
@@ -34,11 +35,9 @@ public class Category_activity extends Activity implements EConnect.OnConnected,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_activity);
         connectNetwork();
-        listCategory.add(new Category("1/1/1",1,"1/1/","1"));
-        initRecycleCategory();
     }
 
-    private void initRecycleCategory() {
+    private void initRecycleCategory(final ArrayList<Category> listCategory) {
         RecyclerView rvCategory = (RecyclerView) findViewById(R.id.rv_category);
         ItemCategoryAdapter adapter = new ItemCategoryAdapter(ItemCategory.createItemCategory(listCategory));
         adapter.setOnItemClickListener(new ItemCategoryAdapter.OnItemClickListener() {
@@ -46,6 +45,7 @@ public class Category_activity extends Activity implements EConnect.OnConnected,
             public void onItemClick(View view, int position) {
                 Toast.makeText(Category_activity.this, " was clicked!" + position, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Category_activity.this, Lesson_Activity.class);
+                intent.putExtra(CATEGORY_NAME,listCategory.get(position).getName());
                 startActivity(intent);
             }
         });
@@ -91,10 +91,13 @@ public class Category_activity extends Activity implements EConnect.OnConnected,
 
     private void doSomeThingWithList(ArrayList<Category> listcategoryList) {
         //code vao day de lam viec voi llist category nhe.
+        ArrayList<Category> listCategory = new ArrayList<Category>();
         for (int i = 0; i < listcategoryList.size(); i++) {
-             // Log.d("Category_activity", listcategoryList.get(i).getName());
-              //Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
+            Category category = listcategoryList.get(i);
+            listCategory.add(new Category(category.getCreatedAt(),
+                    category.getId(), category.getName(), category.getUpdateAt()));
         }
+        initRecycleCategory(listCategory);
     }
 
     @Override

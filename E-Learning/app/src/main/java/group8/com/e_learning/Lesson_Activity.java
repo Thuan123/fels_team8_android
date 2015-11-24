@@ -31,7 +31,15 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
+        initView();
         connectNetwork();
+    }
+
+    private void initView() {
+        tvTitle = (TextView) findViewById(R.id.tv_title_lesson);
+        Intent intent = getIntent();
+        String nameCategory = intent.getStringExtra(Category_activity.CATEGORY_NAME);
+        tvTitle.setText(nameCategory);
     }
 
 
