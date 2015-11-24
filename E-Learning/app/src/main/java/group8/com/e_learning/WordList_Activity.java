@@ -20,16 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group8.com.e_learning.common.Constant;
-import group8.com.e_learning.entities.Category;
 import group8.com.e_learning.entities.Word;
 import group8.com.e_learning.entities.WordAnswer;
 import group8.com.e_learning.network.EConnect;
-import group8.com.e_learning.network.GetCategory;
 
 
 public class WordList_Activity extends Activity
-        implements AdapterView.OnItemSelectedListener, EConnect.OnConnected,GetCategory.OnConnected {
-    private JSONObject jsonObject,categoryObject;
+        implements AdapterView.OnItemSelectedListener, EConnect.OnConnected {
+    private JSONObject jsonObject;
     private Spinner spCategory, spStatus;
     private ArrayList<Word> listWord = new ArrayList<Word>();
     private String[] arrStatus = {"All", "Learned", "Not learned"};
@@ -93,9 +91,6 @@ public class WordList_Activity extends Activity
         {
             e.printStackTrace();
         }*/
-        GetCategory getCategory = new GetCategory(this);
-        getCategory.execute(Constant.API_CATEGORY);
-
         EConnect eConnect = new EConnect(this);
 
         eConnect.execute(makeAPI(category_id, type));
@@ -115,7 +110,7 @@ public class WordList_Activity extends Activity
     }
 
     @Override
-    public void  getJson(JSONObject jsonObject) {
+    public void getJson(JSONObject jsonObject) {
         this.jsonObject = jsonObject;
         doSomeThingWithListWord(getList());
     }
@@ -148,11 +143,9 @@ public class WordList_Activity extends Activity
     }
 
     private void doSomeThingWithListWord(ArrayList<Word> listWord) {
-        for (Word word:listWord)
-        {
-            Log.d("word content",word.getContent());
-            Log.d("word right",word.getRightAnswer());
-        }
+        Log.d("Wordlist", "doSomeThing10");
+        initSpiner();
+        initRecycleWord(listWord);
     }
 
     @Override
@@ -183,9 +176,8 @@ public class WordList_Activity extends Activity
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        Log.d("Wordlist", "onNothingSelected13");
     }
-
     @Override
     public void getCategoryObject(JSONObject jsonObject) {
         categoryObject = jsonObject;
@@ -217,7 +209,7 @@ public class WordList_Activity extends Activity
     private void doSomeThingWithCategoryList(ArrayList<Category> listcategoryList) {
         //code vao day de lam viec voi llist category nhe.
         for (int i = 0; i < listcategoryList.size(); i++) {
-             Log.d("Category_activity", listcategoryList.get(i).getName());
+            Log.d("Category_activity", listcategoryList.get(i).getName());
             //Toast.makeText(this, listcategoryList.get(i).getName(), Toast.LENGTH_SHORT).show();
         }
     }

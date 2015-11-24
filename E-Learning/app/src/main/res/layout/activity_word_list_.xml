@@ -9,7 +9,7 @@
         android:id="@+id/toolbar_actionBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#009688"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -17,14 +17,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
 
             <Button
                 android:id="@+id/button_back"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
+                android:background="@drawable/btn_login_custom"
                 android:onClick="onClick"
-                android:text="Back" />
+                android:text="Back"
+                android:textColor="#009688" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,8 +44,11 @@
                 android:id="@+id/button_PDF"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_login_custom"
                 android:onClick="onClick"
-                android:text="PDF" />
+                android:text="PDF"
+                android:textColor="#009688" />
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
@@ -72,7 +79,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:width="1dp"
-        android:background="@android:color/black" />
+        android:background="#009688" />
 
     <LinearLayout
         android:layout_width="match_parent"

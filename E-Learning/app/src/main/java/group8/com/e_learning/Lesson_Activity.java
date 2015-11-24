@@ -47,6 +47,7 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
                 break;
             case R.id.btn_done:
                 doneLesson();
+                callResult();
                 break;
             case R.id.btn_sound:
                 playSound();
@@ -56,7 +57,6 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
             case R.id.btn_ans3:
             case R.id.btn_ans4:
                 checkAns(v);
-                callResult();
                 break;
         }
     }
@@ -78,7 +78,7 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
 
     @Override
     public void getJson(JSONObject JsonObject) {
-        
+
         this.jsonObject = JsonObject;
         handlerJsonObject();
     }
@@ -87,13 +87,10 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
         try {
             JSONArray array = this.jsonObject.getJSONArray(Constant.PARA_WORDS);
             handlerListWord(getListWord(array));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 
     private ArrayList<Word> getListWord(JSONArray array) {
@@ -107,18 +104,15 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
                 word.setWordAnswer(getAnswer(object.getJSONArray(Constant.PARA_ANSWER)));
                 result.add(word);
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    private WordAnswer[] getAnswer(JSONArray arrayAnswer ) throws JSONException{
+    private WordAnswer[] getAnswer(JSONArray arrayAnswer) throws JSONException {
         WordAnswer[] result = new WordAnswer[4];
-        for(int i=0;i<4;i++)
-        {
+        for (int i = 0; i < 4; i++) {
             JSONObject object = arrayAnswer.getJSONObject(i);
             WordAnswer answer = new WordAnswer();
             answer.setContent(object.getString(Constant.PARA_CONTENT));
@@ -128,16 +122,14 @@ public class Lesson_Activity extends Activity implements View.OnClickListener, E
         return result;
     }
 
-    private String makeAPI()
-    {
+    private String makeAPI() {
 
-        int category_id = getIntent().getIntExtra(Constant.PARA_CATEGORY_ID,0);
+        int category_id = getIntent().getIntExtra(Constant.PARA_CATEGORY_ID, 0);
 
-        return String.format(Constant.API_LESSON,category_id);
+        return String.format(Constant.API_LESSON, category_id);
     }
 
-    private void  connectNetwork()
-    {
+    private void connectNetwork() {
         EConnect eConnect = new EConnect(this);
         eConnect.execute(makeAPI());
     }

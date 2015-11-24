@@ -32,13 +32,7 @@ public class ItemWord {
         String mean = "";
         for (int i = 0; i < list.size(); i++) {
             Word item = list.get(i);
-            WordAnswer[] itemAnser = item.getWordAnswer();
-            for (int j = 0; j < 4; j++) {
-                if (itemAnser[j].getCorrect() == 1) {
-                    mean = itemAnser[j].getContent();
-                }
-            }
-            itemList.add(new ItemWord(mean, item.getContent()));
+            itemList.add(new ItemWord(item.getRightAnswer(), item.getContent()));
         }
         return itemList;
     }
