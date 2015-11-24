@@ -23,7 +23,6 @@ public class ItemWordAdapter extends
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvWord, tvMeaning;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
             tvWord = (TextView) itemView.findViewById(R.id.tv_word);
